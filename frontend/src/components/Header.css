@@ -1,0 +1,217 @@
+.header {
+  padding: 30px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: padding 0.3s ease;
+}
+
+.header.transparent {
+  background: transparent !important;
+}
+
+.header.scrolled {
+  padding: 15px 0;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Logo MUY a la izquierda */
+.logo {
+  margin-left: 60px;
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
+
+/* Contenedor del logo con imagen */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilos para la imagen del logo */
+.logo-image {
+  width: 45px; /* Tamaño ajustado */
+  height: 45px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover opcional para la imagen */
+.logo-container:hover .logo-image {
+  transform: scale(1.1);
+}
+
+/* Asegurar que el texto se alinee bien con la imagen */
+.logo-container h2 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin: 0;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* Menú MUY a la derecha */
+.vertical-nav {
+  margin-right: 60px;
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+
+.vertical-nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 15px;
+  margin: 0;
+  align-items: flex-end;
+}
+
+.vertical-nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vertical-nav a:hover {
+  color: #d9c7b1;
+}
+
+.vertical-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d9c7b1;
+  transition: width 0.3s;
+}
+
+.vertical-nav a:hover::after {
+  width: 100%;
+}
+
+/* Estilos para el menú hamburguesa (solo móvil) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .menu-toggle {
+    display: flex;
+    position: fixed;
+    top: 35px;
+    right: 25px;
+  }
+  
+  .vertical-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    margin-right: 0 !important;
+  }
+  
+  .vertical-nav.open {
+    right: 0;
+  }
+  
+  .vertical-nav ul {
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .vertical-nav a {
+    font-size: 1.5rem;
+  }
+
+  /* Logo en móvil */
+  .logo {
+    margin-left: 25px;
+    position: relative;
+    top: 0;
+  }
+
+  .logo-image {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .logo-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container h2 {
+    font-size: 1.3rem;
+  }
+  
+  .vertical-nav a {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    margin-left: 15px;
+  }
+
+  .logo-image {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logo-container {
+    gap: 8px;
+  }
+}
+
+/* Asegurar que el logo mantenga color blanco siempre */
+.header.scrolled .logo-container h2 {
+  color: #768501 !important;
+}
+
+/* Estilos para emoji temporal si usas placeholder */
+.logo-emoji {
+  font-size: 2rem;
+  margin-right: 8px;
+}

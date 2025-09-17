@@ -1,0 +1,211 @@
+.promo-section {
+  min-height: 100vh;
+  padding: 80px 0;
+  /*#004024*/
+  background: linear-gradient(135deg,#004024 50%, #304600 100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-container {
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between; /* Fuerza separación a los extremos */
+}
+
+/* Parte izquierda - Imagen SIN marco */
+.promo-image-container {
+  flex: 0 0 45%; /* Ancho fijo para la imagen */
+  display: flex;
+  justify-content: flex-start; /* Alinea a la izquierda */
+  align-items: center;
+  padding: 0;
+}
+
+.promo-image {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: flex;
+  justify-content: flex-start; /* Imagen pegada a la izquierda */
+}
+
+.promo-image img {
+  width: 120%;
+  max-height: 700px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Parte derecha - Texto y botón */
+.text-content {
+  flex: 0 0 45%; /* Ancho fijo para el texto */
+  padding: 0 0 0 40px; /* Solo padding izquierdo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Texto alineado a la izquierda */
+  margin-left: auto; /* Empuja el texto a la derecha */
+}
+
+.main-text {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.main-text h2 {
+  font-size: 7rem;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.1;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.main-text h2:last-of-type {
+  margin-bottom: 25px;
+}
+
+.main-text p {
+  font-size: 2rem;
+  margin: 12px 0;
+  color: #d9c7b1;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.subscribe-btn {
+  background-color: #ffffff;
+  color: #d21b21;
+  border: 3px solid #d8d8d9;
+  padding: 22px 65px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+}
+
+.subscribe-btn:hover {
+  background-color: #ffffff;
+  color: #004024;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .promo-image-container {
+    flex: 0 0 40%;
+  }
+  
+  .text-content {
+    flex: 0 0 50%;
+    padding-left: 30px;
+  }
+  
+  .main-text h2 {
+    font-size: 3.8rem;
+  }
+  
+  .main-text p {
+    font-size: 1.7rem;
+  }
+  
+  .subscribe-btn {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .promo-container {
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .promo-image-container,
+  .text-content {
+    flex: 0 0 100%;
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    margin-left: 0;
+  }
+  
+  .promo-image {
+    justify-content: center;
+  }
+  
+  .promo-image img {
+    width: 70%;
+    max-width: 400px;
+  }
+  
+  .text-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .main-text {
+    text-align: center;
+  }
+  
+  .main-text h2 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-text h2 {
+    font-size: 3rem;
+  }
+  
+  .main-text p {
+    font-size: 1.5rem;
+  }
+  
+  .subscribe-btn {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+  }
+  
+  .promo-image img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-text h2 {
+    font-size: 2.5rem;
+  }
+  
+  .main-text p {
+    font-size: 1.3rem;
+  }
+  
+  .subscribe-btn {
+    padding: 15px 35px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  
+  .promo-image img {
+    width: 85%;
+  }
+}
