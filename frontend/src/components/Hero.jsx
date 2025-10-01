@@ -60,6 +60,18 @@ const Hero = () => {
         </motion.p>
       </div>
 
+      {/* Spotify Widget en esquina inferior derecha - Solo el reproductor */}
+      <div className="spotify-widget-minimal">
+        <iframe
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1E4zM8lwNVTMQI"
+          width="300"
+          height="80"
+          frameBorder="0"
+          allow="encrypted-media"
+          title="Spotify Playlist"
+        ></iframe>
+      </div>
+
       {/* Indicadores del carrusel */}
       <div className="slide-indicators">
         {slides.map((_, index) => (

@@ -1,0 +1,294 @@
+.formulario-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header del formulario */
+.formulario-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+/* Logo con imagen */
+.logo-image-form {
+  width: 45px;
+  height: 45px;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+/* Menú hamburguesa */
+.menu-toggle-form {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  position: fixed;
+  top: 35px;
+  right: 25px;
+}
+
+.menu-toggle-form span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Menú desplegable más estrecho */
+.vertical-nav-form {
+  position: fixed;
+  top: 0;
+  right: -50%;
+  width: 20%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.vertical-nav-form.open {
+  right: 0;
+}
+
+.vertical-nav-form ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.vertical-nav-form li {
+  margin: 25px 0;
+}
+
+.vertical-nav-form a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.vertical-nav-form a:hover {
+  color: #d9c7b1;
+}
+
+/* Fondo con imagen */
+.formulario-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/formulario.png'); /* Ruta corregida */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Contenedor del formulario más cuadrado */
+.formulario-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 20px 50px;
+}
+
+.formulario-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 35px;
+  width: 100%;
+  max-width: 850px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.formulario-card h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Campos del formulario más cuadrados */
+.inscripcion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group select {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder {
+  color: #666;
+}
+
+.checkbox-group label {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+/* Instrucciones de pago */
+.pago-instructions {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.pago-instructions h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.pago-instructions p {
+  color: white;
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.bank-details {
+  margin-top: 15px;
+}
+
+.bank-details p {
+  margin: 3px 0;
+  font-size: 0.85rem;
+}
+
+/* Subida de archivo */
+.file-group {
+  color: white;
+}
+
+.file-group input[type="file"] {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* Botón de enviar más cuadrado */
+.submit-btn {
+  background: linear-gradient(45deg, #8c5e31, #d9c7b1);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formulario-card {
+    padding: 25px 20px;
+    margin: 20px;
+  }
+  
+  .formulario-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 12px;
+  }
+  
+  /* Menú más ancho en móvil para mejor usabilidad */
+  .vertical-nav-form {
+    width: 70%;
+    right: -70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-image-form {
+    width: 38px;
+    height: 38px;
+    margin-left: 20px;
+  }
+  
+  .menu-toggle-form {
+    top: 25px;
+    right: 15px;
+  }
+  
+  .formulario-card {
+    padding: 20px 15px;
+  }
+  
+  .formulario-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .vertical-nav-form a {
+    font-size: 1.1rem;
+  }
+}

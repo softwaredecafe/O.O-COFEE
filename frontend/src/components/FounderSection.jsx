@@ -3,6 +3,11 @@ import { motion } from 'framer-motion';
 import './FounderSection.css';
 
 const FounderSection = () => {
+  // Función para redirigir a /blog
+  const redirectToBlog = () => {
+    window.location.href = '/blog';
+  };
+
   return (
     <section className="founder-section">
       {/* Título TEAM centrado */}
@@ -26,7 +31,7 @@ const FounderSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h3>MARLON RENDON</h3>
-          <p className="title">Co Fundador</p>
+          <p className="title">Fundador</p>
           
           <div className="description">
             <p>13 AÑOS EN EL CAFÉ DE ESPECIALIDAD CON LOGROS EN MÚLTIPLES CATEGORIAS, CERTIFICADO SCA Y 
@@ -38,6 +43,7 @@ const FounderSection = () => {
             className="know-more-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={redirectToBlog} // Redirección a /blog
           >
             Conoce mas...
           </motion.button>

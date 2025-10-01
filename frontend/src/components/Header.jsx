@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Header.css';
-// Importa tu imagen (ajusta la ruta según donde tengas la imagen)
-//CAMBIAR RUTA
-import logoImage from '/home/alexandersnd/0.0coffee/frontend/public/images/blanco.png'; // o .svg, .webp, etc.
 
+import logoImage from '/images/blanco.png';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,10 +56,11 @@ const Header = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <li><a href="#home">Inicio</a></li>
-              <li><a href="#formulario">Cataciones</a></li>
+              <li><a href="/formulario">Cataciones</a></li>
               <li><a href="#galeria">Galeria</a></li>
-              <li><a href="#blog">Blog</a></li>
+              <li><a href="/blog">Coffee Blog</a></li>
               <li><a href="#contacto">Contacto</a></li>
+              <li><a href="/roles">Conocenos</a></li>
             </motion.ul>
           </nav>
         )}

@@ -1,0 +1,126 @@
+/* Estilo para la sección principal. Ocupa toda la pantalla. */
+.product-category-section {
+    height: 100vh; /* Altura del 100% del viewport */
+    width: 100vw;  /* Ancho del 100% del viewport */
+    overflow: hidden; /* Evita barras de scroll innecesarias */
+}
+
+/* El grid que contiene las 4 tarjetas */
+.category-grid {
+    display: flex; /* Usamos flexbox para las columnas */
+    height: 100%;
+    width: 100%;
+}
+
+/* Estilo para cada una de las 4 tarjetas de categoría */
+.category-card {
+    /* Layout y Posición */
+    flex: 1; /* Cada tarjeta ocupa el mismo espacio (1/4 del total) */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* Estilo de fondo (la imagen viene del JSX) */
+    background-size: cover;
+    background-position: center;
+
+    /* Transiciones para los efectos hover */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Capa oscura sobre la imagen para que el texto sea legible */
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45); /* Capa oscura semitransparente */
+    z-index: 1;
+    transition: background-color 0.4s ease; /* Transición suave para el hover */
+}
+
+/* Contenedor del texto y el botón dentro de la tarjeta */
+.card-content {
+    position: relative;
+    z-index: 2; /* Se asegura que el contenido esté sobre la capa oscura */
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+}
+
+/* Título de la categoría (Ej: "Coffee", "Tea") */
+.category-title {
+    font-family: 'Helvetica Neue', sans-serif; /* Una fuente limpia y moderna */
+    font-size: 1.5rem; /* Tamaño ajustado */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 25px; /* Espacio entre el título y el botón */
+    color: #f5f5f5;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón "SHOP" */
+.category-button {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 35px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición para el efecto hover */
+}
+
+
+/* --- EFECTOS HOVER (Al pasar el mouse) --- */
+
+/* La capa oscura se hace más clara para resaltar la tarjeta */
+.category-card:hover::before {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* El botón cambia de estilo */
+.category-card:hover .category-button {
+    background: #ffffff;
+    color: #000000;
+}
+
+
+/* --- RESPONSIVIDAD (Para Tablets y Móviles) --- */
+
+/* Para tablets */
+@media (max-width: 768px) {
+    .category-grid {
+        flex-wrap: wrap; /* Permite que las tarjetas se acomoden en 2x2 */
+    }
+    .category-card {
+        width: 50%; /* Cada tarjeta ocupa la mitad del ancho */
+        height: 50%; /* Y la mitad del alto */
+        flex: none; /* Quitamos la propiedad flex para controlar el tamaño manualmente */
+    }
+}
+
+/* Para móviles */
+@media (max-width: 480px) {
+    .category-grid {
+        flex-direction: column; /* Apila las tarjetas verticalmente */
+    }
+    .category-card {
+        width: 100%; /* Cada tarjeta ocupa todo el ancho */
+        height: 25%; /* Y un cuarto del alto */
+    }
+    .category-title {
+        font-size: 1.2rem;
+    }
+    .category-button {
+        padding: 8px 30px;
+    }
+}

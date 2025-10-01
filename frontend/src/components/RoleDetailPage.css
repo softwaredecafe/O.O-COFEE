@@ -1,0 +1,84 @@
+.role-detail-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f4e9 0%, #e8dfca 100%);
+}
+
+.role-hero {
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+  color: white;
+  padding: 100px 20px 60px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.back-button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: white;
+  color: #8B4513;
+}
+
+.role-content {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.role-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.role-text h2 {
+  font-size: 2rem;
+  color: #2c1810;
+  margin-bottom: 20px;
+}
+
+.role-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #5d4037;
+}
+
+.role-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .role-info {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}

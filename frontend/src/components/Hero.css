@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Tangerine';
+  src: url('/fonts/Birthstone-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .hero {
   height: 100vh;
   width: 100%;
@@ -54,11 +61,12 @@
 }
 
 .hero-title {
+  font-family: 'Tangerine', cursive;
   font-size: 5rem;
-  font-weight: 700;
+  font-weight: normal;
   margin-bottom: 20px;
   letter-spacing: 4px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .hero-subtitle {
@@ -66,6 +74,23 @@
   line-height: 1.8;
   margin-bottom: 30px;
   font-weight: 300;
+}
+
+/* Spotify Widget minimalista en esquina inferior derecha */
+.spotify-widget-minimal {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  z-index: 4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.spotify-widget-minimal:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Indicadores del carrusel */
@@ -105,5 +130,36 @@
   
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .spotify-widget-minimal {
+    bottom: 15px;
+    right: 15px;
+    transform: scale(0.9);
+  }
+  
+  .spotify-widget-minimal:hover {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .slide-indicators {
+    bottom: 20px;
+  }
+
+  .spotify-widget-minimal {
+    bottom: 10px;
+    right: 10px;
+    transform: scale(0.8);
+  }
+  
+  .spotify-widget-minimal:hover {
+    transform: scale(0.85);
   }
 }

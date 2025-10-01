@@ -1,8 +1,16 @@
+/* Importar la fuente Canterbury */
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/*ddd1c0   004024*/
 .promo-section {
   min-height: 100vh;
   padding: 80px 0;
-  /*#004024*/
-  background: linear-gradient(135deg,#004024 50%, #304600 100%);
+  background: linear-gradient(45deg,#cfc4b4 50%, #c7bbaa 100%);
   display: flex;
   align-items: center;
   position: relative;
@@ -17,14 +25,14 @@
   padding: 0 20px;
   height: 100%;
   align-items: center;
-  justify-content: space-between; /* Fuerza separación a los extremos */
+  justify-content: space-between;
 }
 
 /* Parte izquierda - Imagen SIN marco */
 .promo-image-container {
-  flex: 0 0 45%; /* Ancho fijo para la imagen */
+  flex: 0 0 45%;
   display: flex;
-  justify-content: flex-start; /* Alinea a la izquierda */
+  justify-content: flex-start;
   align-items: center;
   padding: 0;
 }
@@ -34,7 +42,7 @@
   height: auto;
   overflow: visible;
   display: flex;
-  justify-content: flex-start; /* Imagen pegada a la izquierda */
+  justify-content: flex-start;
 }
 
 .promo-image img {
@@ -48,14 +56,14 @@
 
 /* Parte derecha - Texto y botón */
 .text-content {
-  flex: 0 0 45%; /* Ancho fijo para el texto */
-  padding: 0 0 0 40px; /* Solo padding izquierdo */
-  color: white;
+  flex: 0 0 45%;
+  padding: 0 0 0 40px;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* Texto alineado a la izquierda */
-  margin-left: auto; /* Empuja el texto a la derecha */
+  align-items: flex-start;
+  margin-left: auto;
 }
 
 .main-text {
@@ -64,11 +72,12 @@
 }
 
 .main-text h2 {
+  font-family: 'bajern', serif; /* Fuente Canterbury aplicada solo aquí */
   font-size: 7rem;
   font-weight: 300;
   margin: 0;
   line-height: 1.1;
-  color: #ffffff;
+  color: #000000;
   letter-spacing: 2px;
 }
 
@@ -84,10 +93,10 @@
   letter-spacing: 1px;
 }
 
+/* BOTÓN - Sin fuente personalizada */
 .subscribe-btn {
-  background-color: #ffffff;
-  color: #d21b21;
-  border: 3px solid #d8d8d9;
+  background-color: #ccb78c;
+  color: #000000;
   padding: 22px 65px;
   border-radius: 50px;
   cursor: pointer;
@@ -97,13 +106,14 @@
   letter-spacing: 3px;
   transition: all 0.3s ease;
   margin-top: 25px;
+  border: none;
 }
 
 .subscribe-btn:hover {
-  background-color: #ffffff;
-  color: #004024;
+  background-color: #ddd1c0;
+  color: #c50d0c;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(197, 13, 12, 0.4);
 }
 
 /* Responsive */
@@ -118,7 +128,7 @@
   }
   
   .main-text h2 {
-    font-size: 3.8rem;
+    font-size: 5.5rem;
   }
   
   .main-text p {
@@ -167,13 +177,13 @@
   }
   
   .main-text h2 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .main-text h2 {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   
   .main-text p {
@@ -192,7 +202,7 @@
 
 @media (max-width: 480px) {
   .main-text h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   
   .main-text p {
