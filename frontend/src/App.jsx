@@ -12,8 +12,19 @@ import RoleDetailPage from './components/RoleDetailPage';
 import Productor from './components/Productor'; 
 import Barista from './components/Barista';
 import './styles/App.css';
+import CloudCarousel from './components/CloudCarousel';
+
 
 function App() {
+  const imagenes = [
+    { src: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=500&fit=crop', alt: 'Granos de café' },
+    { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=500&fit=crop', alt: 'Taza de café' },
+    { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=500&fit=crop', alt: 'Café latte art' },
+    { src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=500&fit=crop', alt: 'Café espresso' },
+    { src: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=500&fit=crop', alt: 'Plantación de café' },
+    { src: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=500&fit=crop', alt: 'Café preparándose' }
+  ];
+
   return (
     <Router>
       <div className="App">
@@ -24,6 +35,7 @@ function App() {
               <Hero />
               <PromoSection />
               <FounderSection />
+              <CloudCarousel images={imagenes} />
               <Footer />
             </>
           } />
