@@ -8,9 +8,14 @@ body {
   font-family: 'Arial', sans-serif;
   color: #333;
   line-height: 1.6;
-  cursor: url('https://cdn.custom-cursor.com/db/23818/32/movies-wednesday-tyler-galpin-cursor.png'), auto;
+  cursor: url('https://i.postimg.cc/Y905b6wg/cur-removebg-preview-1-1.png'), auto;
 }
-
+/*
+opciones de cursores
+1) https://i.postimg.cc/zvj0kJrL/curso2-1.png
+2)https://i.postimg.cc/7PVVdYF7/cruso3-2.png
+3)https://i.postimg.cc/4y6FFrDc/Sin-t-tulo-Editado-1.png
+*/
 .container {
   max-width: 1200px;
   margin: 0 auto;

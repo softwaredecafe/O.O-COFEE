@@ -11,43 +11,29 @@ import CoffeeRolesSection from "./components/CoffeeRolesSection";
 import RoleDetailPage from "./components/RoleDetailPage";
 import Productor from "./components/Productor";
 import Barista from "./components/Barista";
-import "./styles/App.css";
 import CloudCarousel from "./components/CloudCarousel";
+import "./styles/App.css";
 
 function App() {
-  const imagenes = [
-    {
-      src: "images/1.png",
-      size: 500,
-      alt: "Café en grano",
-    },
-
-    {
-      src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=500&fit=crop",
-      alt: "Taza de café",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=500&fit=crop",
-      alt: "Café latte art",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=500&fit=crop",
-      alt: "Café espresso",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=500&fit=crop",
-      alt: "Plantación de café",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=500&fit=crop",
-      alt: "Café preparándose",
-    },
-  ];
-
   return (
     <Router>
       <div className="App">
         <Routes>
+          {/* Ruta home que agrupa todos los componentes principales */}
+          <Route
+            path="/home"
+            element={
+              <>
+                <Header />
+                <Hero />
+                <PromoSection />
+                <FounderSection />
+                <Footer />
+              </>
+            }
+          />
+          
+          {/* Ruta raíz también redirige a home o puedes mantenerla separada */}
           <Route
             path="/"
             element={
@@ -56,16 +42,25 @@ function App() {
                 <Hero />
                 <PromoSection />
                 <FounderSection />
-                <CloudCarousel
-                  images={imagenes}
-                  options={{ reflHeight: 0, showNavButtons: false, autoRotate: "left", autoRotateDelay: 3000 }}
-                />
                 <Footer />
               </>
             }
           />
           <Route path="/formulario" element={<FormularioPage />} />
           <Route path="/blog" element={<BlogSection />} />
+
+          {/* Ruta para el carrusel de imágenes */}
+          <Route
+            path="/galeria"
+            element={
+              // ↓↓↓ ESTE ES EL DIV CONTENEDOR AÑADIDO ↓↓↓
+              <div className="carrusel-page-container">
+                <Header />
+                <CloudCarousel />
+                <Footer />
+              </div>
+            }
+          />
 
           {/* Ruta para las tarjetas de roles del café (4 tarjetas originales) */}
           <Route

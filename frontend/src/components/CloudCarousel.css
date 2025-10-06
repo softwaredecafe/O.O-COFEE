@@ -1,51 +1,87 @@
-/* CloudCarousel.css */
+/* CloudCarousel.css (Código final y responsivo) */
 
+/* 1. ESTILOS PARA EL CONTENEDOR DE LA PÁGINA */
+.carrusel-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* =====> FONDO DEGRADADO AÑADIDO <===== */
+  /* He elegido un segundo color complementario para el degradado */
+/*background: radial-gradient(circle at center, #f9f1d9, #e0d1b0);*/
+background: linear-gradient(135deg, #0a1f16 0%, #07140e 100%);
+
+}
+
+/* 2. REGLA AGRESIVA PARA CORREGIR Y POSICIONAR EL FOOTER */
+.carrusel-page-container > *:last-child {
+  position: static;
+  margin-top: auto;
+}
+
+/* 3. ESTILOS DEL COMPONENTE CARRUSEL */
 .cloud-carousel-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 7; 
-    overflow: hidden;
-    display: flex; 
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
 }
 
 .carousel-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-45%); /* Posición para escritorio */
 }
 
-
 .carousel-item {
-    position: absolute;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.carousel-item img {
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .reflection {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
 }
 
-.nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0 15px;
-    z-index: 200;
+/* 4. ESTILOS GLOBALES */
+html, body, #root, .App {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.nav-button.prev {
-    left: 10px;
+/* =====> MEDIA QUERIES PARA RESPONSIVIDAD <===== */
+
+/* Para Tabletas */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    transform: translateY(-25%); /* Sube menos en tabletas */
+  }
 }
 
-.nav-button.next {
-    right: 10px;
+/* Para Móviles */
+@media (max-width: 480px) {
+  .carousel-wrapper {
+    transform: translateY(-15%); /* Sube aún menos en móviles */
+  }
 }
