@@ -1,25 +1,16 @@
-/* CloudCarousel.css (Código final y responsivo) */
-
-/* 1. ESTILOS PARA EL CONTENEDOR DE LA PÁGINA */
 .carrusel-page-container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  /* =====> FONDO DEGRADADO AÑADIDO <===== */
-  /* He elegido un segundo color complementario para el degradado */
-/*background: radial-gradient(circle at center, #f9f1d9, #e0d1b0);*/
-background: linear-gradient(135deg, #0a1f16 0%, #07140e 100%);
-
+  background: linear-gradient(135deg, #0a1f16 0%, #07140e 100%);
 }
 
-/* 2. REGLA AGRESIVA PARA CORREGIR Y POSICIONAR EL FOOTER */
 .carrusel-page-container > *:last-child {
   position: static;
   margin-top: auto;
 }
 
-/* 3. ESTILOS DEL COMPONENTE CARRUSEL */
 .cloud-carousel-container {
   position: relative;
   width: 100%;
@@ -38,7 +29,7 @@ background: linear-gradient(135deg, #0a1f16 0%, #07140e 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-45%); /* Posición para escritorio */
+  transform: translateY(-45%);
 }
 
 .carousel-item {
@@ -62,7 +53,6 @@ background: linear-gradient(135deg, #0a1f16 0%, #07140e 100%);
   border-radius: 8px;
 }
 
-/* 4. ESTILOS GLOBALES */
 html, body, #root, .App {
   margin: 0;
   padding: 0;
@@ -70,18 +60,14 @@ html, body, #root, .App {
   height: 100%;
 }
 
-/* =====> MEDIA QUERIES PARA RESPONSIVIDAD <===== */
-
-/* Para Tabletas */
 @media (max-width: 768px) {
   .carousel-wrapper {
-    transform: translateY(-25%); /* Sube menos en tabletas */
+    transform: translateY(-25%);
   }
 }
 
-/* Para Móviles */
 @media (max-width: 480px) {
   .carousel-wrapper {
-    transform: translateY(-15%); /* Sube aún menos en móviles */
+    transform: translateY(-15%);
   }
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import "./CloudCarousel.css";
 
-// Función para obtener el ancho de la ventana
 const useWindowSize = () => {
   const [size, setSize] = useState([window.innerWidth]);
   useEffect(() => {
@@ -60,21 +59,19 @@ const CloudCarousel = ({
 }) => {
   const [width] = useWindowSize();
 
-  // Opciones y tamaños dinámicos basados en el ancho de la pantalla
   const { imageSize, carouselOptions } = useMemo(() => {
-    if (width < 480) { // Móvil
+    if (width < 480) {
       return {
         imageSize: 200,
         carouselOptions: { xRadius: 120, yRadius: 40 },
       };
     }
-    if (width < 768) { // Tableta
+    if (width < 768) {
       return {
         imageSize: 350,
         carouselOptions: { xRadius: 180, yRadius: 60 },
       };
     }
-    // Escritorio
     return {
       imageSize: 500,
       carouselOptions: { xRadius: 250, yRadius: 80 },
@@ -99,7 +96,7 @@ const CloudCarousel = ({
     reflOpacity: 0.5,
     reflGap: 4,
     minScale: 0.5,
-    ...carouselOptions, // Aplicamos radios dinámicos
+    ...carouselOptions,
     FPS: 30,
     autoRotate: "left",
     autoRotateDelay: 3000,
@@ -122,7 +119,6 @@ const CloudCarousel = ({
   const isMouseOver = useRef(false);
 
   useEffect(() => {
-    // Re-calcula los items cuando las imágenes (y su tamaño) cambian
     const loadedItems = images.map((img, index) => {
       const imageElement = new Image();
       imageElement.src = img.src;
