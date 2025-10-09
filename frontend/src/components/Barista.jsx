@@ -10,7 +10,7 @@ const Barista = () => {
       title: 'Leo',
       description: 'Barista con 5 años de experiencia en la preparación de bebidas artesanales. Especialista en café de especialidad y arte latte.',
       image: '/images/b1.png',
-      path: '/barista-detail'
+      path: '/leo'
     },
     {
       title: 'David',

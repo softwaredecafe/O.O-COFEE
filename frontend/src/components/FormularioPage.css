@@ -18,12 +18,11 @@
   background: transparent;
 }
 
-/* Logo con imagen */
-.logo-image-form {
-  width: 45px;
-  height: 45px;
+/* Logo */
+.logo h2 {
+  color: white;
   margin-left: 30px;
-  margin-top: 5px;
+  font-size: 1.8rem;
 }
 
 /* Menú hamburguesa */
@@ -91,23 +90,14 @@
   color: #d9c7b1;
 }
 
-/* Fondo con imagen */
+/* Fondo con imagen - VERSIÓN CSS */
 .formulario-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-    position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/images/formulario.png'); /* Ruta corregida */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
+  background-image: url('/images/formulario.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -269,10 +259,9 @@
 }
 
 @media (max-width: 480px) {
-  .logo-image-form {
-    width: 38px;
-    height: 38px;
+  .logo h2 {
     margin-left: 20px;
+    font-size: 1.5rem;
   }
   
   .menu-toggle-form {

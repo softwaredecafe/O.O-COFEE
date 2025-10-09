@@ -12,7 +12,9 @@ import RoleDetailPage from "./components/RoleDetailPage";
 import Productor from "./components/Productor";
 import Barista from "./components/Barista";
 import CloudCarousel from "./components/CloudCarousel";
+import Leo from "./components/leo.jsx";
 import "./styles/App.css";
+import EventCalendar from './components/EventCalendar';
 
 function App() {
   return (
@@ -46,14 +48,14 @@ function App() {
               </>
             }
           />
-          <Route path="/formulario" element={<FormularioPage />} />
+          <Route path="/formulario" element={<FormularioPage />
+        } />
           <Route path="/blog" element={<BlogSection />} />
 
           {/* Ruta para el carrusel de imágenes */}
           <Route
             path="/galeria"
             element={
-              // ↓↓↓ ESTE ES EL DIV CONTENEDOR AÑADIDO ↓↓↓
               <div className="carrusel-page-container">
                 <Header />
                 <CloudCarousel />
@@ -109,6 +111,26 @@ function App() {
             path="/productor"
             element={<RoleDetailPage role="productor" />}
           />
+
+          {/* --- RUTA AÑADIDA --- */}
+          <Route 
+          path="/leo" element={
+              <>
+                <Header />
+                <Leo />
+                <Footer />
+              </>
+            } />
+
+          <Route path="/calendario" element={
+              <>
+                <Header />
+                <EventCalendar />
+                <Footer />
+              </>
+            } />
+
+
         </Routes>
       </div>
     </Router>
@@ -116,3 +138,4 @@ function App() {
 }
 
 export default App;
+

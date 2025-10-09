@@ -1,0 +1,234 @@
+/* Importar la fuente Canterbury */
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-green: #2a7d2a;
+  --dark-bg: #121212;
+  --light-gray: #b0b0b0;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- ESTILOS DE LA PÁGINA --- */
+.calendar-page-container {
+  background: linear-gradient(160deg, #1a4d1a, #000000);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.page-title {
+  font-family: 'bajern', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #feffd3;
+  margin: 0 auto 40px auto; /* Centrado horizontal con margin auto */
+  text-align: center; /* Centrado del texto */
+  width: 100%; /* Asegura que tome todo el ancho disponible */
+}
+
+/* --- ESTILOS DEL COMPONENTE CALENDARIO --- */
+.calendar-container {
+  max-width: 900px;
+  margin: 0 auto; /* Centra el calendario en la página */
+  padding: 30px;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Inter', sans-serif;
+  
+  /* Imagen de fondo aplicada solo al contenedor del calendario */
+  background: 
+    linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), 
+    url('/images/calendar.png');
+  background-size: cover;
+  background-position: center center;
+  border: 1px solid var(--border-color);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.calendar-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav-button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--light-gray);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.nav-button:hover {
+  background-color: var(--primary-green);
+  color: #fff;
+  border-color: var(--primary-green);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-of-week, .calendar-day {
+  text-align: center;
+  padding: 10px;
+}
+
+.day-of-week {
+  font-weight: 600;
+  color: var(--light-gray);
+  font-size: 0.9rem;
+}
+
+.calendar-day {
+  min-height: 100px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  position: relative;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.calendar-day:not(.empty):hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.day-number {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 0.8rem;
+  color: var(--light-gray);
+}
+
+.event-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.event-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+  border: 2px solid var(--primary-green);
+}
+
+.event-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  color: var(--light-gray);
+}
+
+
+.calendar-day.has-event {
+  cursor: pointer; /* Indica que el día es clicable */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: zoomIn 0.3s ease;
+}
+
+.modal-image {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.close-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}

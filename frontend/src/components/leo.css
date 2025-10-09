@@ -1,0 +1,170 @@
+/* Importar la fuente Canterbury */
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #000; /* Fondo negro para que no haya flash blanco */
+  overflow-x: hidden; /* Previene el scroll horizontal durante la animación */
+}
+
+/* --- Contenedor principal que divide la pantalla --- */
+.split-screen-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- KEYFRAMES PARA LAS ANIMACIONES --- */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Panel izquierdo (Imagen) --- */
+.image-pane {
+  flex: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: slideInFromLeft 1s ease-out forwards; /* Aplicación de la animación */
+}
+
+.full-height-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Panel derecho (Contenido) --- */
+.content-pane {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vw;
+  /* --- CAMBIO DE COLOR --- */
+  background: linear-gradient(160deg, #1a4d1a, #000000); /* Degradado de verde a negro */
+  color: #e0e0e0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  animation: slideInFromRight 1s ease-out forwards; /* Aplicación de la animación */
+}
+
+.content-wrapper {
+  max-width: 550px;
+  width: 100%;
+}
+
+/* --- Aplicación de animaciones escalonadas al texto --- */
+.leo-title, .leo-subtitle, .leo-text, .social-links {
+  opacity: 0; /* Empiezan invisibles */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.leo-title {
+  font-family: 'bajern', serif; /* Fuente Canterbury aplicada solo aquí */
+  font-size: 8rem;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.1;
+  color: #f0e8d6;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  animation-delay: 0.8s; /* Retraso para que aparezca después de los paneles */
+}
+
+.leo-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #b0b0b0;
+  margin-bottom: 35px;
+  animation-delay: 1s; /* Aparece un poco después del título */
+}
+
+.leo-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  animation-delay: 1.2s; /* El texto aparece después del subtítulo */
+}
+
+.social-links {
+  margin-top: 40px;
+  display: flex;
+  gap: 25px;
+  animation-delay: 1.4s; /* Los iconos son lo último en aparecer */
+}
+
+.social-link {
+  color: #b0b0b0;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.social-link svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* --- Media Query para Responsividad --- */
+@media (max-width: 900px) {
+  /* En móvil, deshabilitamos las animaciones de slide para que no se vea extraño */
+  .image-pane, .content-pane {
+    animation: none;
+  }
+  
+  .split-screen-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .image-pane {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .content-pane {
+    padding: 50px 25px;
+  }
+}

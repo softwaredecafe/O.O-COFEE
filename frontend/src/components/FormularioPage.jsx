@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './FormularioPage.css';
 
+// Importa la imagen directamente
+import formularioBg from '../../public/images/formulario.png';
+
 const FormularioPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,10 +61,24 @@ const FormularioPage = () => {
         </nav>
       </header>
 
-      {/* Fondo con imagen */}
-      <div className="formulario-background"></div>
+      {/* Fondo con imagen - USANDO IMPORT */}
+      <div 
+        className="formulario-background"
+        style={{
+          backgroundImage: `url(${formularioBg})`,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1
+        }}
+      ></div>
 
-      {/* Formulario central */}
+      {/* Resto del código igual... */}
       <motion.div 
         className="formulario-container"
         initial={{ opacity: 0, y: 20 }}
@@ -72,7 +89,7 @@ const FormularioPage = () => {
           <h2>FORMULARIO DE INSCRIPCIÓN</h2>
           
           <form onSubmit={handleSubmit} className="inscripcion-form">
-            {/* Campos básicos */}
+            {/* Campos del formulario... */}
             <div className="form-group">
               <input
                 type="text"
@@ -106,7 +123,6 @@ const FormularioPage = () => {
               />
             </div>
 
-            {/* Experiencia en catación */}
             <div className="form-group">
               <select
                 name="experiencia"
@@ -121,7 +137,6 @@ const FormularioPage = () => {
               </select>
             </div>
 
-            {/* Visita de cafetería */}
             <div className="form-group checkbox-group">
               <label>
                 <input
@@ -134,7 +149,6 @@ const FormularioPage = () => {
               </label>
             </div>
 
-            {/* Nombre de cafetería (condicional) */}
             {formData.visitaCafeteria && (
               <div className="form-group">
                 <input
@@ -147,7 +161,6 @@ const FormularioPage = () => {
               </div>
             )}
 
-            {/* Instrucciones de pago */}
             <div className="pago-instructions">
               <h3>INSTRUCCIONES DE PAGO</h3>
               <p>Realiza el pago de $50 USD por transferencia bancaria:</p>
@@ -159,7 +172,6 @@ const FormularioPage = () => {
               </div>
             </div>
 
-            {/* Subir comprobante */}
             <div className="form-group file-group">
               <label>SUBIR COMPROBANTE DE PAGO</label>
               <input
@@ -171,7 +183,6 @@ const FormularioPage = () => {
               />
             </div>
 
-            {/* Botón de enviar */}
             <button type="submit" className="submit-btn">
               ENVIAR FORMULARIO
             </button>

@@ -41,9 +41,9 @@ const PromoSection = () => {
             className="subscribe-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.href = '/formulario'} // Redirección directa
+            onClick={() => window.location.href = '/calendario'} 
           >
-            ¡INSCRIBETE YA!
+            ¡Nuestras Actividades Futuras!
           </motion.button>
         </motion.div>
       </div>
