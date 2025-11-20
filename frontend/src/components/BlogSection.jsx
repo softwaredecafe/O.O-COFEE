@@ -14,12 +14,22 @@ const blogPosts = [
   },
   {
     id: 2,
-    image: 'images/cafe.png',
-    date: '1 DE NOVIEMBRE 2025',
-    title: 'EL ARTE DE CALIBRAR UN ESPRESSO PERFECTO',
-    snippet: 'CULTURA QUE GIRA EN TORNO AL GRANO... INVOLUCRA EN EL PROCESO DE SER BUENOS BARISTAS PARA LA MARCA.'
-  }
+    image: 'images/codigo3.png',
+    date: '20 DE NOVIEMBRE 2025',
+    title: 'CAFÉ Y CÓDIGO',
+    snippet: 'UN PROGRAMADOR ENTRE FILTRADOS Y FRAMEWORKS'
+  },
+
+  {
+    id: 3,
+    image: 'images/blog3.png',
+    date: '20 DE NOVIEMBRE 2025',
+    title: 'CAFÉ Y CONEXIONES',
+    snippet: 'Marketing, Barismo y la Magia del Café de Especialidad'
+  },
 ];
+
+
 
 const BlogSection = () => {
   const navigate = useNavigate();
