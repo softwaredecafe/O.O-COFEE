@@ -6,8 +6,15 @@ const BlogPostDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    window.disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = `blog-post-${id}`;
+      this.page.title = document.title;
+    };
+    
     const script = document.createElement('script');
-    script.src = 'https://0-0-coffee.disqus.com/embed.js';
+    script.src = 'https://o-o-coffee.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
     script.setAttribute('data-timestamp', +new Date());
     document.body.appendChild(script);
   }, [id]);
