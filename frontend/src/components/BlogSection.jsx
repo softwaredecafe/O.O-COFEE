@@ -74,24 +74,27 @@ const BlogSection = () => {
             <div className="subscription-box">
               <h3>Suscríbete al Blog</h3>
               <p>Recibe nuevos posts directamente en tu email</p>
-              <form 
-                action="https://youremail.list-manage.com/subscribe/post"
-                method="POST"
-                className="subscription-form"
-              >
-                <input type="hidden" name="u" value="tu_codigo" />
-                <input type="hidden" name="id" value="tu_id" />
-                <input 
-                  type="email" 
-                  name="EMAIL"
-                  placeholder="tu@email.com"
-                  required
-                  className="email-input"
-                />
-                <button type="submit" className="subscribe-btn">
-                  Suscribirse
-                </button>
-              </form>
+              
+              <div id="mc_embed_signup">
+                <form action="https://usac.us8.list-manage.com/subscribe/post?u=ed8528a6a040cc76e62855357&amp;id=c377c569de&amp;f_id=00f203e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank">
+                  <div id="mc_embed_signup_scroll">
+                    <div className="mc-field-group">
+                      <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" required placeholder="tu@email.com" />
+                    </div>
+                    <div id="mce-responses" className="clear foot">
+                      <div className="response" id="mce-error-response" style={{display: 'none'}}></div>
+                      <div className="response" id="mce-success-response" style={{display: 'none'}}></div>
+                    </div>
+                    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+                      <input type="text" name="b_ed8528a6a040cc76e62855357_c377c569de" tabIndex="-1" value="" />
+                    </div>
+                    <div className="clear foot">
+                      <input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Suscribirse" />
+                    </div>
+                  </div>
+                </form>
+              </div>
+
             </div>
 
           </aside>
