@@ -19,7 +19,6 @@ function EventCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  // --- NUEVO ESTADO: para manejar la imagen seleccionada en la modal ---
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {

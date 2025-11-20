@@ -1,116 +1,104 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import './BlogSection.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import BlogPostCard from './BlogPostCard';
+import './BlogHome.css';
+import './BlogPostCard.css';
+
+const blogPosts = [
+  {
+    id: 1,
+    image: 'images/blog1.png', 
+    date: '1 DE NOVIEMBRE 2025',
+    title: 'COMPETIR O COMPARTIR EL CAMINO AL ÉXITO',
+    snippet: 'LOGRO TRAS TAZA DE CAFÉ PODRÁ PROVOCAR EN EL PROCESO DE SER BUENOS BARISTAS PARA LA MARCA.'
+  },
+  {
+    id: 2,
+    image: 'images/cafe.png',
+    date: '1 DE NOVIEMBRE 2025',
+    title: 'EL ARTE DE CALIBRAR UN ESPRESSO PERFECTO',
+    snippet: 'CULTURA QUE GIRA EN TORNO AL GRANO... INVOLUCRA EN EL PROCESO DE SER BUENOS BARISTAS PARA LA MARCA.'
+  }
+];
 
 const BlogSection = () => {
-  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "THE PHYSICS OF ESPRESSO",
-      category: "SCIENCE/INVESTIGATIONS",
-      date: "August 14, 2023",
-      excerpt: "Hello! I am so thrilled to announce that my second book The Physics of Espresso is finally out! This new book not only brings the latest research in espresso preparation but also contains hundreds of graphs and drawings, professional photos, and insights from top baristas worldwide...",
-      image: "/images/blog1.jpg"
-    },
-    {
-      id: 2,
-      title: "RECENT INSIGHTS INTO ESPRESSO DYNAMICS",
-      category: "CONFERENCE UPDATES",
-      date: "March 3, 2024",
-      excerpt: "I will be presenting a conference on the topic of espresso dynamics during SCA 2024 in Chicago! This presentation will cover the latest findings in extraction theory and how they apply to everyday brewing practices.",
-      image: "/images/blog2.jpg"
-    }
-  ];
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    console.log('Email suscrito:', email);
-    setEmail('');
-    // Lógica de suscripción posterior
+  const handlePostClick = (id) => {
+    navigate(`/blog/${id}`);
   };
 
   return (
-    <section className="blog-section">
-      <div className="blog-container">
-        {/* Posts principales */}
-        <div className="blog-posts">
-          <h2 className="blog-main-title">Coffee Blog</h2>
-          
-          {blogPosts.map((post, index) => (
-            <motion.article 
-              key={post.id}
-              className="blog-post"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <div className="post-header">
-                <span className="post-category">{post.category}</span>
-                <h3 className="post-title">{post.title}</h3>
-                <p className="post-date">{post.date}</p>
-              </div>
-              
-              <div className="post-content">
-                <p className="post-excerpt">{post.excerpt}</p>
-                <button className="read-more-btn">Read More</button>
-              </div>
-              
-              <div className="post-divider"></div>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Sidebar */}
-        <motion.div 
-          className="blog-sidebar"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          {/* About Me */}
-          <div className="sidebar-widget">
-            <h3>About Me</h3>
-            <div className="about-content">
-              <img 
-                src="/images/perfil.png" 
-                alt="Profile" 
-                className="profile-image"
-              />
-              <p>
-                13 años en el café de especialidad con logros en multiples 
-                categorias, certificado SCA y juez en competencias nacionales,
-                 5to lugar nacional de Aeropress 2024. Fundador de punto coffee 
-                 (O.O COFFEE)
-              </p>
-            </div>
-          </div>
-
-          {/* Subscribe Form */}
-          <div className="sidebar-widget">
-            <h3>Subscribe to My Blog</h3>
-            <p className="subscribe-text">Get new content delivered directly to your inbox.</p>
-            
-            <form onSubmit={handleSubscribe} className="subscribe-form">
-              <input
-                type="email"
-                placeholder="Type your email..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="email-input"
-              />
-              <button type="submit" className="subscribe">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </motion.div>
+    <div className="blog-home-container">
+      
+      <div className="stars-background">
+        <div className="stars"></div>
+        <div className="stars2"></div>
+        <div className="stars3"></div>
       </div>
-    </section>
+
+      <div className="blog-content-wrapper">
+        <h1 className="blog-home-title">Coffe Blog</h1>
+
+        <div className="blog-main-layout">
+          
+          <main className="blog-posts-list">
+            {blogPosts.map(post => (
+              <BlogPostCard
+                key={post.id}
+                image={post.image}
+                date={post.date}
+                title={post.title}
+                snippet={post.snippet}
+                onClick={() => handlePostClick(post.id)}
+              />
+            ))}
+          </main>
+
+          <aside className="about-me-sidebar">
+            <img 
+              src="images/perfil.png"
+              alt="Acerca de mí" 
+              className="about-me-image" 
+            />
+            <h2>Acerca de mí</h2>
+            <p>
+              Soy un barista con más de 13 años de experiencia en el café 
+              de especialidad. Certificado por la SCA y juez en competencias 
+              nacionales, he tenido la oportunidad de destacar en distintas 
+              categorías, obteniendo el 5º lugar nacional de Aeropress 2024. 
+              Soy fundador de Punto Coffee (O.O Coffee), un espacio dedicado a 
+              compartir mi pasión por el café y crear comunidad.
+            </p>
+
+            <div className="subscription-box">
+              <h3>Suscríbete al Blog</h3>
+              <p>Recibe nuevos posts directamente en tu email</p>
+              <form 
+                action="https://youremail.list-manage.com/subscribe/post"
+                method="POST"
+                className="subscription-form"
+              >
+                <input type="hidden" name="u" value="tu_codigo" />
+                <input type="hidden" name="id" value="tu_id" />
+                <input 
+                  type="email" 
+                  name="EMAIL"
+                  placeholder="tu@email.com"
+                  required
+                  className="email-input"
+                />
+                <button type="submit" className="subscribe-btn">
+                  Suscribirse
+                </button>
+              </form>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </div>
   );
 };
 

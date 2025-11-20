@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.blog-home-container {
+  background-color: #0c1a10; 
+  color: #f0f0f0;
+  min-height: 100vh;
+  padding: 0px 0;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.blog-home-title {
+  font-family: 'Consolas', 'bajern', monospace;
+  font-size: 8rem;
+  color: #DDD0C1;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 10;
+  transition: font-size 0.3s ease;
+}
+
+.blog-content-wrapper {
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.blog-main-layout {
+  position: relative;
+  width: 100%;
+  padding-right: 380px;
+  box-sizing: border-box;
+}
+
+.blog-posts-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  max-width: 950px;
+  margin-left: 450px; /* <-- Ajusta este número como quieras */
+  margin-right: auto;
+}
+
+.about-me-sidebar {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  width: 300px;
+  min-width: 280px;
+  padding-left: 30px;
+  border-left: 1px solid #444;
+}
+
+.about-me-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+  border: 3px solid #f0f0f0;
+}
+
+.about-me-sidebar h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.about-me-sidebar p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: justify;
+}
+
+.stars-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+@keyframes animateStars {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+.stars, .stars2, .stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2000px;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+.stars {
+  background-image: radial-gradient(1px 1px at 50px 100px, #fff, transparent),
+                    radial-gradient(1px 1px at 100px 300px, #fff, transparent),
+                    radial-gradient(1px 1px at 300px 450px, #fff, transparent),
+                    radial-gradient(1px 1px at 400px 200px, #fff, transparent);
+  background-size: 500px 500px;
+  animation: animateStars 150s linear infinite;
+}
+
+.stars2 {
+  background-image: radial-gradient(2px 2px at 200px 50px, #fff, transparent),
+                    radial-gradient(2px 2px at 350px 250px, #fff, transparent),
+                    radial-gradient(1px 1px at 50px 400px, #fff, transparent),
+                    radial-gradient(1px 1px at 450px 350px, #fff, transparent);
+  background-size: 600px 600px;
+  animation: animateStars 100s linear infinite;
+}
+
+.stars3 {
+  background-image: radial-gradient(3px 3px at 150px 150px, #fff, transparent),
+                    radial-gradient(2px 2px at 250px 400px, #fff, transparent),
+                    radial-gradient(2px 2px at 450px 100px, #fff, transparent);
+  background-size: 500px 500px;
+  animation: animateStars 75s linear infinite;
+}
+
+@media (max-width: 1024px) {
+  .blog-main-layout {
+    padding-right: 0;
+  }
+  
+  .about-me-sidebar {
+    position: static;
+    border-left: none;
+    border-top: 1px solid #444;
+    padding-left: 0;
+    padding-top: 30px;
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto 0;
+  }
+  
+  .blog-posts-list {
+     max-width: 700px;
+     margin: 0 auto;
+  }
+  
+  .blog-main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-home-title {
+    font-size: 2.8rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 20px;
+  border: 2px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+.subscription-box {
+  background: #1a2f1a;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 1px solid #8B4513;
+}
+
+.subscription-box h3 {
+  color: #DDD0C1;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.subscription-box p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-input {
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #0c1a10;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.email-input::placeholder {
+  color: #888;
+}
+
+.subscribe-btn {
+  padding: 12px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.subscribe-btn:hover {
+  background: #A0522D;
+}

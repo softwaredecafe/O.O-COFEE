@@ -7,6 +7,7 @@ import FounderSection from "./components/FounderSection";
 import FormularioPage from "./components/FormularioPage";
 import Footer from "./components/Footer";
 import BlogSection from "./components/BlogSection";
+import BlogPostDetail from "./components/BlogPostDetail"; // <--- IMPORTACIÓN NUEVA
 import CoffeeRolesSection from "./components/CoffeeRolesSection";
 import RoleDetailPage from "./components/RoleDetailPage";
 import Productor from "./components/Productor";
@@ -35,7 +36,7 @@ function App() {
             }
           />
           
-          {/* Ruta raíz también redirige a home o puedes mantenerla separada */}
+          {/* Ruta raíz también redirige a home */}
           <Route
             path="/"
             element={
@@ -48,9 +49,13 @@ function App() {
               </>
             }
           />
-          <Route path="/formulario" element={<FormularioPage />
-        } />
+          
+          <Route path="/formulario" element={<FormularioPage />} />
+          
+          {/* --- SECCIÓN BLOG --- */}
           <Route path="/blog" element={<BlogSection />} />
+          {/* Ruta dinámica para el detalle del post */}
+          <Route path="/blog/:id" element={<BlogPostDetail />} /> 
 
           {/* Ruta para el carrusel de imágenes */}
           <Route
@@ -64,7 +69,7 @@ function App() {
             }
           />
 
-          {/* Ruta para las tarjetas de roles del café (4 tarjetas originales) */}
+          {/* Ruta para las tarjetas de roles del café */}
           <Route
             path="/roles"
             element={
@@ -76,7 +81,7 @@ function App() {
             }
           />
 
-          {/* Ruta para la página del productor con 6 tarjetas */}
+          {/* Ruta para la página del productor */}
           <Route
             path="/productor-page"
             element={
@@ -88,7 +93,7 @@ function App() {
             }
           />
 
-          {/* Ruta para la página del barista con 6 tarjetas */}
+          {/* Ruta para la página del barista */}
           <Route
             path="/barista-page"
             element={
@@ -100,7 +105,7 @@ function App() {
             }
           />
 
-          {/* Rutas para los roles individuales (páginas de detalle) */}
+          {/* Rutas para los roles individuales */}
           <Route path="/barista" element={<RoleDetailPage role="barista" />} />
           <Route path="/catador" element={<RoleDetailPage role="catador" />} />
           <Route
@@ -112,7 +117,7 @@ function App() {
             element={<RoleDetailPage role="productor" />}
           />
 
-          {/* --- RUTA AÑADIDA --- */}
+          {/* --- OTRAS RUTAS --- */}
           <Route 
           path="/leo" element={
               <>
@@ -130,7 +135,6 @@ function App() {
               </>
             } />
 
-
         </Routes>
       </div>
     </Router>
@@ -138,4 +142,3 @@ function App() {
 }
 
 export default App;
-
