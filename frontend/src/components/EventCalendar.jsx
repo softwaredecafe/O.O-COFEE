@@ -33,9 +33,9 @@ function EventCalendar() {
         },
         {
           id: 2,
-          title: 'Cata "SALE PANA"',
-          date: '2025-10-31',
-          imageUrl: '/images/catacion2.png'
+          title: '"FILTRADOS" de lo Basico a lo Complejo',
+          date: '2025-11-26',
+          imageUrl: '/images/taller.png'
         }
       ];
       

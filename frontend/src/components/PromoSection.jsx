@@ -16,7 +16,7 @@ const PromoSection = () => {
         >
           <div className="promo-image">
             <img 
-              src="/images/mono.png"
+              src="/images/taller.png"
               alt="Coffee tasting event" 
             />
           </div>
@@ -31,10 +31,9 @@ const PromoSection = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <div className="main-text">
-            <h2>La cata</h2>
-            <h2>amigable</h2>
-            <h2>de septiembre</h2>
-            <h2>esta cerca</h2>
+            <h2>¿Te apasiona</h2>
+            <h2>el café</h2>
+            <h2>y quieres perfeccionar tu técnica?</h2>
           </div>
           
           <motion.button 
@@ -43,7 +42,7 @@ const PromoSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = '/calendario'} 
           >
-            ¡Nuestras Actividades Futuras!
+            ¡Ver nuestras Actividades Futuras!
           </motion.button>
         </motion.div>
       </div>
