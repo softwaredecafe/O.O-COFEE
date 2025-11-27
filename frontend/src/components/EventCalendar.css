@@ -162,7 +162,7 @@
 
 
 .calendar-day.has-event {
-  cursor: pointer; /* Indica que el día es clicable */
+  cursor: pointer; 
 }
 
 .modal-overlay {

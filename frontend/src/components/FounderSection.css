@@ -1,217 +1,179 @@
+/* Importar la fuente */
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- ESTRUCTURA GLOBAL --- */
 .founder-section {
+  width: 100%;
   min-height: 100vh;
-  padding: 100px 0;
-  /* Degrado elegante en lugar de textura */
-  background: linear-gradient(135deg, #fafbf1 0%, #e3caae 50%, #f5f6e9 100%);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+}
+
+/* Contenedor centrado limitado */
+.founder-centered-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* --- TEXTO (IZQUIERDA) --- */
+.founder-text-box {
+  flex: 1;
+  max-width: 550px;
+  position: relative;
+  min-height: 400px; /* Altura mínima para evitar saltos bruscos al cambiar texto */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.team-title {
-  font-size: 4.5rem;
-  color: #000000;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 80px;
-  text-align: center;
-  letter-spacing: 3px;
-}
-
-.founder-container {
-  display: flex;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  gap: 100px;
-  align-items: center;
-}
-
-.founder-content {
-  flex: 1;
-  padding-right: 40px;
-}
-
-.founder-content h3 {
-  font-size: 3rem;
-  color: #000000;
-  margin-bottom: 5px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.founder-content .title {
-  color: #8c5e31;
-  margin-bottom: 40px;
-  font-size: 1.4rem;
-  font-weight: 500;
-  font-style: italic;
-  margin-top: -5px;
-}
-
-.description {
-  margin-bottom: 50px;
-}
-
-.description p {
-  color: #000000;
-  line-height: 1.8;
-  font-size: 1.1rem;
-  font-weight: 400;
-}
-
-.know-more-btn {
-  background-color: transparent;
-  color: #e30000;
-  border: 2px solid #000000;
-  padding: 15px 40px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.know-more-btn:hover {
-  background-color: #000000;
-  color: #fafbf1;
-  transform: translateY(-2px);
-}
-
-.know-more-btn::after {
-  content: '>';
-  margin-left: 10px;
-  font-weight: bold;
-}
-
-.founder-image {
-  flex: 1;
-  display: flex;
   justify-content: center;
 }
 
-.founder-image img {
-  width: 100%;
-  max-width: 450px;
-  height: 550px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+.subtitle {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: block;
 }
 
-/* Responsive */
+/* Títulos Góticos */
+.founder-text-box h2 {
+  font-family: 'bajern', serif;
+  font-size: 8rem;
+  line-height: 0.85;
+  color: #000000;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.founder-text-box h2:last-of-type {
+  margin-bottom: 40px;
+}
+
+.description p {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.description .highlight {
+  font-weight: 700;
+  border-bottom: 2px solid #000;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+/* Botón Bloque Negro */
+.black-block-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 18px 45px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  margin-top: 30px;
+  align-self: flex-start; /* Alineado a la izquierda */
+  transition: all 0.3s ease;
+}
+
+/* --- CAJA DE IMAGEN (DERECHA) --- */
+.founder-image-box {
+  flex: 1;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a120b;
+  min-height: 400px; /* Mantiene la caja estable mientras cambia la foto */
+}
+
+/* IMAGEN NATURAL */
+.profile-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+/* Texto decorativo Outline */
+.outline-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'bajern', serif;
+  font-size: 6rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: 2;
+  text-align: center;
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 1100px) {
-  .team-title {
-    font-size: 4rem;
-    margin-bottom: 60px;
-  }
-  
-  .founder-container {
-    gap: 80px;
-  }
-  
-  .founder-content h3 {
-    font-size: 2.5rem;
-  }
-  
-  .founder-image img {
-    max-width: 400px;
-    height: 500px;
+  .founder-text-box h2 {
+    font-size: 6rem;
   }
 }
 
 @media (max-width: 968px) {
-  .founder-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 60px;
+  .founder-centered-container {
+    flex-direction: column-reverse; /* Móvil: Imagen arriba, Texto abajo */
+    gap: 50px;
   }
-  
-  .founder-content {
-    padding-right: 0;
-    order: 2;
-  }
-  
-  .founder-image {
-    order: 1;
-  }
-  
-  .team-title {
-    font-size: 3.5rem;
-    margin-bottom: 50px;
-  }
-  
-  .founder-content h3 {
-    font-size: 2.2rem;
-    margin-bottom: 3px;
-  }
-  
-  .founder-content .title {
-    margin-top: -3px;
-  }
-}
 
-@media (max-width: 768px) {
-  .founder-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #fafbf1 0%, #e8e9d8 60%, #f5f6e9 100%);
-  }
-  
-  .team-title {
-    font-size: 3rem;
-  }
-  
-  .founder-content h3 {
-    font-size: 2rem;
-  }
-  
-  .founder-content .title {
-    font-size: 1.2rem;
-  }
-  
-  .description p {
-    font-size: 1rem;
-  }
-  
-  .founder-image img {
+  .founder-image-box {
+    width: 100%;
     max-width: 350px;
-    height: 420px;
+  }
+
+  .founder-text-box {
+    text-align: center;
+    padding: 0 10px;
+    align-items: center; /* Centrar botón en móvil */
+    min-height: auto;
+  }
+  
+  .black-block-btn {
+    align-self: center; /* Centrar botón en móvil */
+  }
+
+  .founder-text-box h2 {
+    font-size: 5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .team-title {
-    font-size: 2.5rem;
+  .founder-text-box h2 {
+    font-size: 3.5rem;
   }
   
-  .founder-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 2px;
-  }
-  
-  .founder-content .title {
-    margin-top: -2px;
-    font-size: 1.1rem;
-  }
-  
-  .know-more-btn {
-    padding: 12px 30px;
-    font-size: 1rem;
-  }
-  
-  .founder-image img {
-    max-width: 280px;
-    height: 350px;
-  }
-  
-  .founder-container {
-    gap: 50px;
+  .black-block-btn {
+    padding: 15px 30px;
+    width: 100%;
   }
 }

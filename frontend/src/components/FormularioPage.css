@@ -1,283 +1,268 @@
-.formulario-page {
+/* FormularioPage.css - Diseño Limpio + Fondo Full Screen */
+
+/* Importar fuentes */
+@font-face {
+  font-family: 'bajern';
+  src: url('/fonts/bajern.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variables de color */
+:root {
+  --color-fondo: #ffffff; 
+  --color-texto-principal: #2A2C23; 
+  --color-borde: #D8C8B1; 
+  --color-borde-activo: #2A2C23; 
+  --color-boton: #2A2C23; 
+  --color-boton-texto: #ffffff;
+}
+
+/* --- ESTRUCTURA PRINCIPAL (FONDO PANTALLA COMPLETA) --- */
+.formulario-container {
+  width: 100%;
   min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Header del formulario */
-.formulario-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 30px 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-}
-
-/* Logo */
-.logo h2 {
-  color: white;
-  margin-left: 30px;
-  font-size: 1.8rem;
-}
-
-/* Menú hamburguesa */
-.menu-toggle-form {
+  /* Color base */
+  background-color: var(--color-fondo);
   display: flex;
   flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  z-index: 1001;
-  position: fixed;
-  top: 35px;
-  right: 25px;
-}
-
-.menu-toggle-form span {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 3px 0;
-  transition: 0.3s;
-}
-
-/* Menú desplegable más estrecho */
-.vertical-nav-form {
-  position: fixed;
-  top: 0;
-  right: -50%;
-  width: 20%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: center;
   align-items: center;
-  transition: right 0.3s ease;
-  z-index: 1000;
+  padding: 60px 20px;
+  position: relative;
+  
+  /* CONFIGURACIÓN IMAGEN FULL SCREEN */
+  background-image: url('/images/fondo2.png'); /* Verifica tu ruta */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center center; /* Centrada */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Efecto fijo al hacer scroll */
 }
 
-.vertical-nav-form.open {
-  right: 0;
+/* --- HEADER --- */
+.formulario-header {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 50px;
 }
 
-.vertical-nav-form ul {
-  list-style: none;
-  padding: 0;
+.icono-header img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.formulario-header h1 {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--color-texto-principal);
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-weight: 800;
+  /* Fondo blanco semitransparente opcional si el texto no se lee bien sobre la imagen */
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* --- EL FORMULARIO --- */
+.formulario-catacion {
+  width: 100%;
+  max-width: 700px;
+  /* Fondo blanco semitransparente para que el formulario sea legible sobre la imagen */
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 30px; /* Bordes del contenedor del formulario */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+/* --- GRUPOS DE CAMPOS --- */
+.campo-grupo {
+  margin-bottom: 30px;
+}
+
+.campo-grupo label {
+  display: block;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--color-texto-principal);
+}
+
+/* Inputs de Texto Redondeados */
+.input-redondeado {
+  width: 100%;
+  padding: 15px 25px;
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: 50px; /* Bordes completamente redondeados */
+  font-size: 1rem;
+  font-family: 'Helvetica', sans-serif;
+  color: var(--color-texto-principal);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-redondeado:focus {
+  border-color: var(--color-borde-activo);
+  box-shadow: 0 0 0 2px rgba(42, 44, 35, 0.1);
+}
+
+/* --- RADIO BUTTONS --- */
+.opciones-experiencia {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-texto-principal);
+}
+
+.opcion-radio input {
+  display: none;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-borde);
+  border-radius: 50%;
+  margin-right: 15px;
+  position: relative;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.opcion-radio input:checked + .radio-custom {
+  border-color: var(--color-borde-activo);
+}
+
+.opcion-radio input:checked + .radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-borde-activo);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- SECCIÓN DE PAGO --- */
+.instrucciones-pago {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 40px 0;
+  border: 1px solid var(--color-borde);
+}
+
+.instrucciones-pago h3 {
+  font-family: 'bajern', serif;
+  font-size: 1.8rem;
+  color: var(--color-texto-principal);
+  margin-top: 0;
   text-align: center;
 }
 
-.vertical-nav-form li {
-  margin: 25px 0;
+.datos-bancarios {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  border: 1px dashed var(--color-borde);
 }
 
-.vertical-nav-form a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: color 0.3s;
+/* --- SUBIDA DE ARCHIVO --- */
+.file-upload.input-redondeado {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--color-borde);
+  cursor: pointer;
 }
 
-.vertical-nav-form a:hover {
-  color: #d9c7b1;
-}
-
-/* Fondo con imagen - VERSIÓN CSS */
-.formulario-background {
-  position: fixed;
+.file-upload input[type="file"] {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/formulario.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
+  opacity: 0;
+  cursor: pointer;
 }
 
-/* Contenedor del formulario más cuadrado */
-.formulario-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 100px 20px 50px;
-}
-
-.formulario-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
-  border-radius: 12px;
-  padding: 35px;
-  width: 100%;
-  max-width: 850px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.formulario-card h2 {
-  color: white;
+.file-info {
+  padding: 15px 25px;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Campos del formulario más cuadrados */
-.inscripcion-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group input,
-.form-group select {
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  font-size: 1rem;
-  color: #333;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group select::placeholder {
-  color: #666;
-}
-
-.checkbox-group label {
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.checkbox-group input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-}
-
-/* Instrucciones de pago */
-.pago-instructions {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px 0;
-}
-
-.pago-instructions h3 {
-  color: white;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-.pago-instructions p {
-  color: white;
-  margin: 5px 0;
+  font-weight: 500;
+  color: #777;
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.bank-details {
-  margin-top: 15px;
-}
-
-.bank-details p {
-  margin: 3px 0;
-  font-size: 0.85rem;
-}
-
-/* Subida de archivo */
-.file-group {
-  color: white;
-}
-
-.file-group input[type="file"] {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 10px;
-  border-radius: 8px;
-  margin-top: 5px;
-}
-
-/* Botón de enviar más cuadrado */
-.submit-btn {
-  background: linear-gradient(45deg, #8c5e31, #d9c7b1);
-  color: white;
+/* --- BOTÓN ENVIAR --- */
+.boton-enviar {
+  width: 100%;
+  padding: 18px;
+  background-color: var(--color-boton);
+  color: var(--color-boton-texto);
   border: none;
-  padding: 16px;
-  border-radius: 8px;
   font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 700;
   letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  margin-top: 20px;
+  border-radius: 50px;
+  margin-top: 30px;
+  transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
+.boton-enviar:hover {
+  opacity: 0.9;
   transform: translateY(-2px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .formulario-card {
-    padding: 25px 20px;
-    margin: 20px;
-  }
-  
-  .formulario-card h2 {
-    font-size: 1.5rem;
-  }
-  
-  .form-group input,
-  .form-group select {
-    padding: 12px;
-  }
-  
-  /* Menú más ancho en móvil para mejor usabilidad */
-  .vertical-nav-form {
-    width: 70%;
-    right: -70%;
-  }
+/* --- MENSAJES DE ESTADO --- */
+.mensaje-exito, .mensaje-cargando {
+  padding: 15px 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 10px;
 }
 
-@media (max-width: 480px) {
-  .logo h2 {
-    margin-left: 20px;
-    font-size: 1.5rem;
+.mensaje-exito {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.mensaje-cargando {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .formulario-header h1 {
+    font-size: 1.2rem;
   }
   
-  .menu-toggle-form {
-    top: 25px;
-    right: 15px;
-  }
-  
-  .formulario-card {
-    padding: 20px 15px;
-  }
-  
-  .formulario-card h2 {
-    font-size: 1.3rem;
-  }
-  
-  .vertical-nav-form a {
-    font-size: 1.1rem;
+  .formulario-catacion {
+    padding: 25px;
   }
 }

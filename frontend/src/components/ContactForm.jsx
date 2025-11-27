@@ -125,7 +125,6 @@ const ContactForm = ({ onRegistration }) => {
     }
   }
 
-  // ... resto del código del componente (el return con el formulario) permanece igual ...
 
   return (
     <section className="form-section" id="formulario">

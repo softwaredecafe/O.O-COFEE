@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './EventCalendar.css';
 
-// --- Iconos SVG para los botones de navegación ---
 const ArrowLeft = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="15 18 9 12 15 6"></polyline>
@@ -13,7 +12,6 @@ const ArrowRight = () => (
     <polyline points="9 18 15 12 9 6"></polyline>
   </svg>
 );
-// --- FIN DE LA CORRECCIÓN ---
 
 function EventCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -27,15 +25,22 @@ function EventCalendar() {
       const mockEvents = [
         {
           id: 1,
-          title: 'Cata "TAZAS EN MONADAS 🐒"',
-          date: '2025-10-15',
-          imageUrl: '/images/mono.png'
+          title: '"FILTRADOS" de lo Basico a lo Complejo"',
+          date: '2025-11-26',
+          imageUrl: 'images/actividades/taller.png'
         },
         {
           id: 2,
-          title: '"FILTRADOS" de lo Basico a lo Complejo',
-          date: '2025-11-26',
-          imageUrl: '/images/taller.png'
+          title: '"Taller Sensorial',
+          date: '2025-12-06',
+          imageUrl: 'images/actividades/sensorial.png'
+        },
+
+        {
+          id: 3,
+          title: 'TAZAS ENDIABLADAS',
+          date: '2025-12-07',
+          imageUrl: 'images/actividades/teco.png'
         }
       ];
       
@@ -56,7 +61,6 @@ function EventCalendar() {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
   };
   
-  // --- NUEVAS FUNCIONES: para abrir y cerrar la modal ---
   const handleEventClick = (imageUrl) => {
     setSelectedImage(imageUrl);
   };

@@ -1,194 +1,296 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import './FormularioPage.css';
 
-// Importa la imagen directamente
-import formularioBg from '../../public/images/formulario.png';
-
 const FormularioPage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: '',
-    correo: '',
-    telefono: '',
+    nombreCompleto: '',
     experiencia: '',
-    visitaCafeteria: false,
-    nombreCafeteria: '',
-    comprobante: null
+    cafeteria: '',
+    archivo: null
   });
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value
-    }));
+  const [enviado, setEnviado] = useState(false);
+  const [cargando, setCargando] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === 'archivo') {
+      setFormData(prev => ({
+        ...prev,
+        archivo: files[0]
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos del formulario:', formData);
-    // Lógica backend posterior
+    setCargando(true);
+
+    try {
+      await enviarAGoogleAppsScript(formData);
+      setEnviado(true);
+      setTimeout(() => {
+        setEnviado(false);
+        resetForm();
+      }, 5000);
+    } catch (error) {
+      console.error('Error al enviar:', error);
+      alert('Error al enviar el formulario: ' + error.message);
+    } finally {
+      setCargando(false);
+    }
+  };
+
+  const enviarAGoogleAppsScript = async (data) => {
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwUDUn3MuZ_rQi9L2yLPnzV6mJYt4fXMYwCoqUvjgFRY9YVQlMPwTyI-sz2cUIHX0/exec';
+
+    try {
+      // Preparar los datos
+      const payload = new URLSearchParams();
+      payload.append('nombre', data.nombreCompleto);
+      payload.append('experiencia', data.experiencia);
+      payload.append('cafeteria', data.cafeteria || '');
+
+      // Si hay archivo, convertirlo a base64
+      if (data.archivo) {
+        const base64File = await fileToBase64(data.archivo);
+        payload.append('archivo', base64File);
+        payload.append('nombreArchivo', data.archivo.name);
+      }
+
+      console.log('Enviando datos al script...', {
+        nombre: data.nombreCompleto,
+        experiencia: data.experiencia,
+        archivo: data.archivo ? data.archivo.name : 'No hay archivo'
+      });
+
+      // Enviar con timeout para evitar bloqueos
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 segundos
+
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: payload,
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
+      }
+
+      const resultText = await response.text();
+      console.log('Respuesta recibida:', resultText);
+
+      let jsonResult;
+      try {
+        jsonResult = JSON.parse(resultText);
+      } catch (parseError) {
+        console.error('Error parseando JSON:', parseError);
+        throw new Error('Respuesta no válida del servidor');
+      }
+
+      if (jsonResult.status !== 'success') {
+        throw new Error(jsonResult.message || 'Error del servidor');
+      }
+
+      console.log(' Envío exitoso:', jsonResult);
+      return jsonResult;
+
+    } catch (error) {
+      console.error('Error detallado en envío:', error);
+      if (error.name === 'AbortError') {
+        throw new Error('Tiempo de espera agotado. El servidor no respondió.');
+      }
+      throw new Error(`Error de conexión: ${error.message}`);
+    }
+  };
+
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = reader.result.split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
+  const resetForm = () => {
+    setFormData({
+      nombreCompleto: '',
+      experiencia: '',
+      cafeteria: '',
+      archivo: null
+    });
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput) fileInput.value = '';
   };
 
   return (
-    <div className="formulario-page">
-      {/* Header con logo y menú hamburguesa */}
-      <header className="formulario-header">
-        <div className="logo">
-          <h2>O.O COFFEE</h2>
+    <div className="formulario-container">
+      <div className="formulario-header">
+        <h1>Formulario de Registro 0.0 COFFEE</h1>
+        <p>Complete todos los campos para registrarse en nuestra sesión de catación</p>
+      </div>
+
+      {enviado && (
+        <div className="mensaje-exito">
+          ¡Registro completado! Comprobante guardado correctamente.
         </div>
-        
-        <button 
-          className="menu-toggle-form"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        
-        {/* Menú desplegable */}
-        <nav className={`vertical-nav-form ${isMenuOpen ? 'open' : ''}`}>
-          <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/formulario">Formulario</a></li>
-            <li><a href="#pago">Pago</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#blog">Blog</a></li>
-          </ul>
-        </nav>
-      </header>
+      )}
 
-      {/* Fondo con imagen - USANDO IMPORT */}
-      <div 
-        className="formulario-background"
-        style={{
-          backgroundImage: `url(${formularioBg})`,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          zIndex: -1
-        }}
-      ></div>
+      {cargando && (
+        <div className="mensaje-cargando">
+          Procesando comprobante, por favor espere...
+        </div>
+      )}
 
-      {/* Resto del código igual... */}
-      <motion.div 
-        className="formulario-container"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="formulario-card">
-          <h2>FORMULARIO DE INSCRIPCIÓN</h2>
-          
-          <form onSubmit={handleSubmit} className="inscripcion-form">
-            {/* Campos del formulario... */}
-            <div className="form-group">
+      <form onSubmit={handleSubmit} className="formulario-catacion">
+        {/* Nombre Completo */}
+        <div className="campo-grupo">
+          <label htmlFor="nombreCompleto">NOMBRE COMPLETO *</label>
+          <input
+            type="text"
+            id="nombreCompleto"
+            name="nombreCompleto"
+            value={formData.nombreCompleto}
+            onChange={handleChange}
+            required
+            placeholder="Ingrese su nombre completo"
+            disabled={cargando}
+          />
+        </div>
+
+        {/* Experiencia en Catación */}
+        <div className="campo-grupo">
+          <label>EXPERIENCIA EN CATACIÓN *</label>
+          <div className="opciones-experiencia">
+            <label className="opcion-radio">
               <input
-                type="text"
-                name="nombre"
-                placeholder="NOMBRE COMPLETO"
-                value={formData.nombre}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                type="email"
-                name="correo"
-                placeholder="CORREO ELECTRÓNICO"
-                value={formData.correo}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                type="tel"
-                name="telefono"
-                placeholder="TELÉFONO"
-                value={formData.telefono}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <select
+                type="radio"
                 name="experiencia"
-                value={formData.experiencia}
-                onChange={handleInputChange}
+                value="PRINCIPIANTE"
+                checked={formData.experiencia === 'PRINCIPIANTE'}
+                onChange={handleChange}
                 required
-              >
-                <option value="">EXPERIENCIA EN CATACIÓN</option>
-                <option value="principiante">PRINCIPIANTE</option>
-                <option value="medio">MEDIO</option>
-                <option value="profesional">PROFESIONAL</option>
-              </select>
-            </div>
-
-            <div className="form-group checkbox-group">
-              <label>
-                <input
-                  type="checkbox"
-                  name="visitaCafeteria"
-                  checked={formData.visitaCafeteria}
-                  onChange={handleInputChange}
-                />
-                ¿NOS VISITA DE ALGUNA CAFETERÍA?
-              </label>
-            </div>
-
-            {formData.visitaCafeteria && (
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="nombreCafeteria"
-                  placeholder="NOMBRE DE LA CAFETERÍA"
-                  value={formData.nombreCafeteria}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-
-            <div className="pago-instructions">
-              <h3>INSTRUCCIONES DE PAGO</h3>
-              <p>Realiza el pago de $50 USD por transferencia bancaria:</p>
-              <div className="bank-details">
-                <p><strong>Banco:</strong> International Coffee Bank</p>
-                <p><strong>Cuenta:</strong> 123-456789-001</p>
-                <p><strong>Beneficiario:</strong> Catación Café Especial</p>
-                <p><strong>SWIFT:</strong> ICBKUS33</p>
-              </div>
-            </div>
-
-            <div className="form-group file-group">
-              <label>SUBIR COMPROBANTE DE PAGO</label>
-              <input
-                type="file"
-                name="comprobante"
-                onChange={handleInputChange}
-                accept="image/*"
-                required
+                disabled={cargando}
               />
-            </div>
-
-            <button type="submit" className="submit-btn">
-              ENVIAR FORMULARIO
-            </button>
-          </form>
+              <span className="radio-custom"></span>
+              PRINCIPIANTE
+            </label>
+            
+            <label className="opcion-radio">
+              <input
+                type="radio"
+                name="experiencia"
+                value="MEDIO"
+                checked={formData.experiencia === 'MEDIO'}
+                onChange={handleChange}
+                disabled={cargando}
+              />
+              <span className="radio-custom"></span>
+              MEDIO
+            </label>
+            
+            <label className="opcion-radio">
+              <input
+                type="radio"
+                name="experiencia"
+                value="PROFESIONAL"
+                checked={formData.experiencia === 'PROFESIONAL'}
+                onChange={handleChange}
+                disabled={cargando}
+              />
+              <span className="radio-custom"></span>
+              PROFESIONAL
+            </label>
+          </div>
         </div>
-      </motion.div>
+
+        {/* Cafetería */}
+        <div className="campo-grupo">
+          <label htmlFor="cafeteria">Numero de Telefono</label>
+          <input
+            type="text"
+            id="cafeteria"
+            name="cafeteria"
+            value={formData.cafeteria}
+            onChange={handleChange}
+            placeholder="Ingresa tu numero de telefono"
+            disabled={cargando}
+          />
+        </div>
+
+        {/* Instrucciones de Pago */}
+        <div className="instrucciones-pago">
+          <h3>INSTRUCCIONES DE PAGO</h3>
+          <div className="detalles-pago">
+            <p>Realiza el pago de <strong>$50 USD</strong> por transferencia bancaria:</p>
+            <div className="datos-bancarios">
+              <div><strong>Banco:</strong> International Coffee Bank</div>
+              <div><strong>Cuenta:</strong> 123-456789-001</div>
+              <div><strong>Beneficiario:</strong> Catación Café Especial</div>
+              <div><strong>SWIFT:</strong> ICBKUS33</div>
+            </div>
+            <p className="nota-pago">
+              <strong>Suba el comprobante de transferencia aquí mismo:</strong>
+            </p>
+          </div>
+        </div>
+
+        {/* Subir Comprobante */}
+        <div className="campo-grupo">
+          <label htmlFor="archivo">SUBIR COMPROBANTE DE PAGO *</label>
+          <div className="file-upload">
+            <input
+              type="file"
+              id="archivo"
+              name="archivo"
+              onChange={handleChange}
+              accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+              required
+              disabled={cargando}
+            />
+            <div className="file-info">
+              {formData.archivo ? (
+                <span> Archivo seleccionado: {formData.archivo.name}</span>
+              ) : (
+                <span> Haga clic para seleccionar su comprobante</span>
+              )}
+            </div>
+          </div>
+          <small className="formato-archivos">
+            Formatos aceptados: PDF, JPG, PNG (Máx. 10MB)
+          </small>
+        </div>
+
+        {/* Botón de Envío */}
+        <button 
+          type="submit" 
+          className="boton-enviar"
+          disabled={cargando}
+        >
+          {cargando ? 'SUBIENDO ARCHIVO...' : 'ENVIAR REGISTRO Y COMPROBANTE'}
+        </button>
+      </form>
+
+      <div className="informacion-contacto">
+        <h4>¿Problemas con la subida?</h4>
+        <p>Contáctenos a: instagram: 0.0 coffee | +502 4888 6580</p>
+      </div>
     </div>
   );
 };

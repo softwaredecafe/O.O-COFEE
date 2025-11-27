@@ -1,4 +1,4 @@
-/* Importar la fuente Canterbury */
+/*fuente Canterbury */
 @font-face {
   font-family: 'bajern';
   src: url('/fonts/bajern.woff2') format('truetype');
@@ -6,11 +6,12 @@
   font-style: normal;
   font-display: swap;
 }
+
 /*ddd1c0   004024*/
 .promo-section {
   min-height: 100vh;
   padding: 80px 0;
-  background: linear-gradient(45deg,#cfc4b4 50%, #c7bbaa 100%);
+  background: linear-gradient(160deg, #1a4d1a, #000000);
   display: flex;
   align-items: center;
   position: relative;
@@ -28,7 +29,6 @@
   justify-content: space-between;
 }
 
-/* Parte izquierda - Imagen SIN marco */
 .promo-image-container {
   flex: 0 0 45%;
   display: flex;
@@ -77,7 +77,7 @@
   font-weight: 300;
   margin: 0;
   line-height: 1.1;
-  color: #000000;
+  color: #f4f0e9;
   letter-spacing: 2px;
 }
 
@@ -111,9 +111,9 @@
 
 .subscribe-btn:hover {
   background-color: #ddd1c0;
-  color: #c50d0c;
+  color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(197, 13, 12, 0.4);
+  box-shadow: 0 10px 30px rgba(255, 149, 1, 0.4);
 }
 
 /* Responsive */
