@@ -7,7 +7,7 @@ import FounderSection from "./components/FounderSection";
 import FormularioPage from "./components/FormularioPage";
 import Footer from "./components/Footer";
 import BlogSection from "./components/BlogSection";
-import BlogPostDetail from "./components/BlogPostDetail"; // <--- IMPORTACIÓN NUEVA
+import BlogPostDetail from "./components/BlogPostDetail";
 import CoffeeRolesSection from "./components/CoffeeRolesSection";
 import RoleDetailPage from "./components/RoleDetailPage";
 import Productor from "./components/Productor";
@@ -17,16 +17,22 @@ import Leo from "./components/leo.jsx";
 import "./styles/App.css";
 import EventCalendar from './components/EventCalendar';
 
+// --- IMPORTACIÓN NUEVA ---
+import Snowfall from "./components/Snowfall"; 
+
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          {/* Ruta home que agrupa todos los componentes principales */}
+          {/* Ruta home que agrupa todos los componentes principales.
+             Se agrega <Snowfall /> aquí para que solo aparezca en el home.
+          */}
           <Route
             path="/home"
             element={
               <>
+                <Snowfall /> {/* <--- EFECTO AGREGADO AQUÍ */}
                 <Header />
                 <Hero />
                 <PromoSection />
@@ -36,11 +42,12 @@ function App() {
             }
           />
           
-          {/* Ruta raíz también redirige a home */}
+          {/* Ruta raíz también redirige a home con nieve */}
           <Route
             path="/"
             element={
               <>
+                <Snowfall /> {/* <--- EFECTO AGREGADO AQUÍ */}
                 <Header />
                 <Hero />
                 <PromoSection />
@@ -49,15 +56,15 @@ function App() {
               </>
             }
           />
+          
+          {/* Las siguientes rutas NO tienen Snowfall */}
           
           <Route path="/formulario" element={<FormularioPage />} />
           
           {/* --- SECCIÓN BLOG --- */}
           <Route path="/blog" element={<BlogSection />} />
-          {/* Ruta dinámica para el detalle del post */}
           <Route path="/blog/:id" element={<BlogPostDetail />} /> 
 
-          {/* Ruta para el carrusel de imágenes */}
           <Route
             path="/galeria"
             element={
@@ -69,7 +76,6 @@ function App() {
             }
           />
 
-          {/* Ruta para las tarjetas de roles del café */}
           <Route
             path="/roles"
             element={
@@ -81,7 +87,6 @@ function App() {
             }
           />
 
-          {/* Ruta para la página del productor */}
           <Route
             path="/productor-page"
             element={
@@ -93,7 +98,6 @@ function App() {
             }
           />
 
-          {/* Ruta para la página del barista */}
           <Route
             path="/barista-page"
             element={
@@ -105,7 +109,6 @@ function App() {
             }
           />
 
-          {/* Rutas para los roles individuales */}
           <Route path="/barista" element={<RoleDetailPage role="barista" />} />
           <Route path="/catador" element={<RoleDetailPage role="catador" />} />
           <Route

@@ -26,9 +26,9 @@ const teamData = [
     id: 3,
     subtitle: "COLABORADOR AND SOFTWARE DEVELOPER",
     nameLines: ["ALEXANDER", "GUZMAN"], // Nombre ejemplo
-    description: "EXPERTO EN ANÁLISIS SENSORIAL Y PROCESOS DE FERMENTACIÓN. BUSCANDO SIEMPRE EL PERFIL DE TAZA PERFECTO.",
-    highlight: "Q GRADER CERTIFICADO",
-    footer: "DIRECTOR DE LABORATORIO DE CATA",
+    description: "Desarrollador de software, movido por lógica, creatividad y mucho café.",
+    highlight: "SOFTWARE DEVELOPER",
+    footer: "COLABORADOR DE PUNTO COFFEE (O.O COFFEE)",
     image: "/images/actividades/alex.png" // Asegúrate de tener esta imagen
   }
 ];
@@ -105,7 +105,7 @@ const FounderSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }} // Un poco más lento para elegancia
+              transition={{ duration: 0.8 }} 
             />
           </AnimatePresence>
           

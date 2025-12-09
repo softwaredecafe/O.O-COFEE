@@ -34,7 +34,7 @@
   flex: 1;
   max-width: 550px;
   position: relative;
-  min-height: 400px; /* Altura mínima para evitar saltos bruscos al cambiar texto */
+  min-height: 400px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
