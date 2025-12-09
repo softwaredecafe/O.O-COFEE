@@ -3,12 +3,8 @@ import React, { useRef, useEffect } from 'react';
 const Snowfall = () => {
   const canvasRef = useRef(null);
 
-  // --- CORRECCIÓN DE LA RUTA ---
-  // En la carpeta public, la ruta empieza después de 'public/'
+  // --- RUTA DE IMAGEN ---
   const IMAGE_PATH = '/images/tematicos/copo.png'; 
-  
-  const MIN_SIZE = 10;   
-  const MAX_SIZE = 35;   
   const SNOWFLAKE_COUNT = 60; 
 
   useEffect(() => {
@@ -24,16 +20,9 @@ const Snowfall = () => {
     snowflakeImg.src = IMAGE_PATH; 
     
     let imageReady = false;
-
-    // Esto es clave: si la ruta está mal, esto nunca se ejecuta
     snowflakeImg.onload = () => {
         imageReady = true;
         render(); 
-    };
-    
-    // (Opcional) Debug para ver si falla la carga en consola
-    snowflakeImg.onerror = () => {
-        console.error("No se pudo cargar la imagen del copo en: ", IMAGE_PATH);
     };
 
     const snowflakes = [];
@@ -44,10 +33,23 @@ const Snowfall = () => {
       }
 
       reset(isInitial = false) {
+        // 1. Detectamos si es móvil (ancho menor a 768px)
+        const isMobile = width < 768;
+
+        // 2. Definimos tamaños según el dispositivo
+        // Móvil: entre 5px y 18px | Escritorio: entre 10px y 35px
+        const minSize = isMobile ? 5 : 10;
+        const maxSize = isMobile ? 18 : 35;
+
         this.x = Math.random() * width;
-        this.y = isInitial ? Math.random() * height : -MAX_SIZE;
-        this.size = Math.random() * (MAX_SIZE - MIN_SIZE) + MIN_SIZE;
-        this.speed = (this.size / MAX_SIZE) * 1.5 + 0.5; 
+        this.y = isInitial ? Math.random() * height : -maxSize;
+        
+        // 3. Generamos el tamaño usando los límites calculados arriba
+        this.size = Math.random() * (maxSize - minSize) + minSize;
+        
+        // La velocidad depende del tamaño relativo (para mantener efecto 3D en ambos)
+        this.speed = (this.size / maxSize) * 1.5 + 0.5; 
+        
         this.wind = Math.random() * 2 - 1;
         this.angle = Math.random() * 360;
         this.spin = (Math.random() < 0.5 ? 1 : -1) * (Math.random() * 0.5 + 0.1);
@@ -72,9 +74,11 @@ const Snowfall = () => {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate((this.angle * Math.PI) / 180);
-        ctx.globalAlpha = this.size / MAX_SIZE; 
+        
+        // Ajustamos la transparencia un poco
+        // (dividir por 35 fija la opacidad máxima basada en el tamaño 'ideal' de escritorio)
+        ctx.globalAlpha = Math.min(this.size / 35, 1); 
 
-        // Dibujar imagen centrada
         ctx.drawImage(snowflakeImg, -this.size / 2, -this.size / 2, this.size, this.size);
         
         ctx.restore();
@@ -103,6 +107,8 @@ const Snowfall = () => {
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
+      // Nota: Los copos se ajustarán de tamaño gradualmente 
+      // conforme salgan de la pantalla y se llamen a reset()
     };
 
     window.addEventListener('resize', handleResize);
@@ -122,8 +128,8 @@ const Snowfall = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 9999, 
-        pointerEvents: 'none', 
+        zIndex: 9999,
+        pointerEvents: 'none',
       }}
     />
   );
