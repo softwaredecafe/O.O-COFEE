@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import VisitorCounter from './VisitorCounter'; 
 import './Footer.css';
 
 const Footer = () => {
@@ -13,7 +14,6 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          {/* Iconos a la izquierda */}
           <div className="footer-left">
             <div className="social-icons">
               <a href="https://www.instagram.com/0.0coffee?igsh=MXNxcHV6anJ6dzA2cQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -27,9 +27,9 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            <VisitorCounter />
           </div>
 
-          {/* Texto a la derecha */}
           <div className="footer-right">
             <p>2025 0.0 coffee. Todos los derechos reservados.</p>
           </div>

@@ -17,7 +17,7 @@ import Leo from "./components/leo.jsx";
 import "./styles/App.css";
 import EventCalendar from './components/EventCalendar';
 
-// --- IMPORTACIÓN NUEVA ---
+// Mantenemos Snowfall, quitamos VisitorCounter de aquí
 import Snowfall from "./components/Snowfall"; 
 
 function App() {
@@ -25,16 +25,13 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {/* Ruta home que agrupa todos los componentes principales.
-             Se agrega <Snowfall /> aquí para que solo aparezca en el home.
-          */}
           <Route
             path="/home"
             element={
               <>
-                <Snowfall /> {/* <--- EFECTO AGREGADO AQUÍ */}
+                <Snowfall /> {/* Solo la nieve */}
                 <Header />
-                <Hero />
+                <Hero /> {/* El contador ahora vive aquí adentro */}
                 <PromoSection />
                 <FounderSection />
                 <Footer />
@@ -42,14 +39,13 @@ function App() {
             }
           />
           
-          {/* Ruta raíz también redirige a home con nieve */}
           <Route
             path="/"
             element={
               <>
-                <Snowfall /> {/* <--- EFECTO AGREGADO AQUÍ */}
+                <Snowfall /> {/* Solo la nieve */}
                 <Header />
-                <Hero />
+                <Hero /> {/* El contador ahora vive aquí adentro */}
                 <PromoSection />
                 <FounderSection />
                 <Footer />
@@ -57,14 +53,10 @@ function App() {
             }
           />
           
-          {/* Las siguientes rutas NO tienen Snowfall */}
-          
+          {/* Resto de rutas sin cambios... */}
           <Route path="/formulario" element={<FormularioPage />} />
-          
-          {/* --- SECCIÓN BLOG --- */}
           <Route path="/blog" element={<BlogSection />} />
           <Route path="/blog/:id" element={<BlogPostDetail />} /> 
-
           <Route
             path="/galeria"
             element={
@@ -75,7 +67,6 @@ function App() {
               </div>
             }
           />
-
           <Route
             path="/roles"
             element={
@@ -86,7 +77,6 @@ function App() {
               </>
             }
           />
-
           <Route
             path="/productor-page"
             element={
@@ -97,7 +87,6 @@ function App() {
               </>
             }
           />
-
           <Route
             path="/barista-page"
             element={
@@ -108,35 +97,13 @@ function App() {
               </>
             }
           />
-
           <Route path="/barista" element={<RoleDetailPage role="barista" />} />
           <Route path="/catador" element={<RoleDetailPage role="catador" />} />
-          <Route
-            path="/tostador"
-            element={<RoleDetailPage role="tostador" />}
-          />
-          <Route
-            path="/productor"
-            element={<RoleDetailPage role="productor" />}
-          />
+          <Route path="/tostador" element={<RoleDetailPage role="tostador" />} />
+          <Route path="/productor" element={<RoleDetailPage role="productor" />} />
 
-          {/* --- OTRAS RUTAS --- */}
-          <Route 
-          path="/leo" element={
-              <>
-                <Header />
-                <Leo />
-                <Footer />
-              </>
-            } />
-
-          <Route path="/calendario" element={
-              <>
-                <Header />
-                <EventCalendar />
-                <Footer />
-              </>
-            } />
+          <Route path="/leo" element={<><Header /><Leo /><Footer /></>} />
+          <Route path="/calendario" element={<><Header /><EventCalendar /><Footer /></>} />
 
         </Routes>
       </div>
