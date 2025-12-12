@@ -52,7 +52,7 @@ const BlogSection = () => {
       </div>
 
       <div className="blog-content-wrapper">
-        <h1 className="blog-home-title">Coffe Blog</h1>
+        <h1 className="blog-home-title">Coffee Blog</h1>
 
         <div className="blog-main-layout">
           
