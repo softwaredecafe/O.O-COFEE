@@ -42,6 +42,53 @@ const postsDatabase = {
       "A veces creo que el café de especialidad nos ha enseñado a mirar el mundo con más detalle. Él lo hace desde la barra; yo, desde las palabras. Y entre tragos y conversaciones, descubrimos que el café no solo es una bebida, sino una forma de entender la creatividad, la pasión por lo que hacemos y la vida que construimos juntos.",
       "Al final, lo que compartimos no es solo una taza, sino la manera en que el café se convierte en inspiración, en pausa, en ritual y en puente. Una mezcla perfecta entre historias, aromas y momentos que nos recuerdan que, igual que en el marketing y en el barismo, siempre hay algo nuevo que descubrir, probar y contar."
     ]
+  },
+  "4": {
+    title: "TAZAS ENDIABLADAS CON TECO",
+    headerImage: "/images/teco/2.png",
+    // inlineImage se eliminó para este post específico y se pasó al contenido
+    authorName: "Marlon Rendon",
+    authorAvatar: "/images/marlon.png",
+    content: [
+      {
+        type: "text",
+        value: "Hay días que se sienten distintos desde el primer momento, como si trajeran una chispa especial. Así fue esta experiencia. En vísperas de la tradicional Quema del Diablo, cuando el aire se llena de simbolismo y la ciudad empieza a encenderse de energía, nos reunimos para vivir una jornada “endiablada” dedicada al café, a los sentidos y a la comunidad que lo rodea."
+      },
+      {
+        type: "text",
+        value: "La tarde tomó rumbo con la presencia de Teco Echeverría, un nombre que resuena fuerte en el mundo del café guatemalteco. Campeón nacional de barismo en 2014 y nuevamente en 2024, Teco no solo domina técnicas, protocolos y competencias: domina el arte de conectar. Habla del café con una pasión tan genuina que uno no solo escucha… se contagia. Cada explicación se convertía en una invitación a viajar por aromas, texturas y recuerdos que solo el buen café es capaz de despertar."
+      },
+      {
+        type: "image",
+        src: "/images/teco/4.png", // Imagen original
+        alt: "Teco Echeverría"
+      },
+      {
+        type: "text",
+        value: "Durante la cata, exploramos diversas variedades y perfiles que se movían entre lo vibrante, lo suave, lo dulce y lo inesperado. Cada taza era una historia distinta, una personalidad nueva por descubrir. Y entre todas, hubo un cafecito especial uno que está por salir al mercado que capturó miradas, sonrisas y hasta silencios. Esos silencios buenos, los que surgen cuando uno prueba algo que de verdad lo sorprende."
+      },
+      {
+        type: "text",
+        value: "El entorno acompañó la experiencia a la perfección. Siena Luz, en Antigua Guatemala, nos regaló un ambiente íntimo, cálido y casi mágico; un lugar donde el tiempo parecía avanzar más despacio para permitirnos saborear cada momento. Entre luces suaves, conversaciones espontáneas y el aroma constante del café, el espacio se convirtió en un refugio para quienes aman aprender, compartir y descubrir."
+      },
+      {
+        type: "image",
+        src: "/images/teco/3.png", 
+        alt: "Ambiente en Siena Luz"
+      },
+      {
+        type: "text",
+        value: "Detrás de todo estuvo la visión de 0.0 Coffee y su creador, Marlon Rendón, quienes hicieron posible este encuentro. Su intención de unir a la comunidad cafetera, impulsar espacios de aprendizaje y celebrar el trabajo de quienes dedican su vida a la taza perfecta, se sintió en cada detalle de la organización."
+      },
+      {
+        type: "text",
+        value: "Al final del evento, quedó esa sensación hermosa de plenitud: la de haber vivido algo especial. Las “Catas Endiabladas” no solo encendieron el paladar; encendieron emociones, inspiraciones y ese fuego interno que compartimos quienes amamos el café y todo lo que representa."
+      },
+      {
+        type: "text",
+        value: "Una mañana para recordar… y para seguir saboreando."
+      }
+    ]
   }
 };
 
@@ -77,6 +124,8 @@ const BlogPostDetail = () => {
     return <div style={{color: 'white', textAlign: 'center', marginTop: '100px'}}>Artículo no encontrado</div>;
   }
 
+  const isNewContentFormat = post.content.length > 0 && typeof post.content[0] === 'object';
+
   return (
     <div className="post-page-container">
       
@@ -95,21 +144,47 @@ const BlogPostDetail = () => {
         </h1>
 
         <div className="post-body-text">
-          <p>{post.content[0]}</p>
+          
+          {isNewContentFormat ? (
+            // LÓGICA PARA EL FORMATO NUEVO (Post 4)
+            post.content.map((block, index) => {
+              if (block.type === 'text') {
+                return <p key={index}>{block.value}</p>;
+              }
+              if (block.type === 'image') {
+                return (
+                  <div key={index} className="post-inline-image-wrapper">
+                    <img 
+                      src={block.src} 
+                      alt={block.alt || "Imagen del blog"} 
+                      className="post-inline-image"
+                    />
+                  </div>
+                );
+              }
+              return null;
+            })
+          ) : (
+            // LÓGICA PARA EL FORMATO ANTIGUO (Posts 1, 2, 3)
+            <>
+              <p>{post.content[0]}</p>
 
-          {post.inlineImage && (
-            <div className="post-inline-image-wrapper">
-              <img 
-                src={post.inlineImage} 
-                alt="Imagen del post" 
-                className="post-inline-image"
-              />
-            </div>
+              {post.inlineImage && (
+                <div className="post-inline-image-wrapper">
+                  <img 
+                    src={post.inlineImage} 
+                    alt="Imagen del post" 
+                    className="post-inline-image"
+                  />
+                </div>
+              )}
+
+              {post.content.slice(1).map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </>
           )}
 
-          {post.content.slice(1).map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
         </div>
 
         <footer className="post-footer">

@@ -55,8 +55,8 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          Join us in seeking quality, truth and accountability in coffee.<br />
-          Together, we journey to find the finest and most unique coffees in the world.
+          Tómate tu tiempo...<br />
+          
         </motion.p>
       </div>
 

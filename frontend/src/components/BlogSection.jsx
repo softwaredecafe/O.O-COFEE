@@ -6,11 +6,18 @@ import './BlogPostCard.css';
 
 const blogPosts = [
   {
-    id: 1,
-    image: 'images/blog1.png', 
-    date: '1 DE NOVIEMBRE 2025',
-    title: 'COMPETIR O COMPARTIR EL CAMINO AL ÉXITO',
-    snippet: 'LOGRO TRAS TAZA DE CAFÉ PODRÁ PROVOCAR EN EL PROCESO DE SER BUENOS BARISTAS PARA LA MARCA.'
+    id: 4,
+    image: 'images/teco/6.png',
+    date: '12 DE DICIEMBRE 2025',
+    title: 'TAZAS ENDIABLADAS CON TECO',
+    snippet: 'En esta cata no solo probamos café...'
+  },
+  {
+    id: 3,
+    image: 'images/blog3.png',
+    date: '20 DE NOVIEMBRE 2025',
+    title: 'CAFÉ Y CONEXIONES',
+    snippet: 'Marketing, Barismo y la Magia del Café de Especialidad'
   },
   {
     id: 2,
@@ -19,17 +26,14 @@ const blogPosts = [
     title: 'CAFÉ Y CÓDIGO',
     snippet: 'UN PROGRAMADOR ENTRE FILTRADOS Y FRAMEWORKS'
   },
-
   {
-    id: 3,
-    image: 'images/blog3.png',
-    date: '20 DE NOVIEMBRE 2025',
-    title: 'CAFÉ Y CONEXIONES',
-    snippet: 'Marketing, Barismo y la Magia del Café de Especialidad'
-  },
+    id: 1,
+    image: 'images/blog1.png', 
+    date: '1 DE NOVIEMBRE 2025',
+    title: 'COMPETIR O COMPARTIR EL CAMINO AL ÉXITO',
+    snippet: 'LOGRO TRAS TAZA DE CAFÉ PODRÁ PROVOCAR EN EL PROCESO DE SER BUENOS BARISTAS PARA LA MARCA.'
+  }
 ];
-
-
 
 const BlogSection = () => {
   const navigate = useNavigate();

@@ -7,11 +7,11 @@ const teamData = [
   {
     id: 1,
     subtitle: "FOUNDER and BREWING SCA CERTIFIED",
-    nameLines: ["MARLON", "RENDON"],
+    nameLines: ["MARLON", "RENDÓN"],
     description: "13 AÑOS EN EL CAFÉ DE ESPECIALIDAD. CERTIFICADO SCA Y JUEZ EN COMPETENCIAS NACIONALES.",
     highlight: "6TO LUGAR NACIONAL AEROPRESS 2024",
     footer: "FUNDADOR DE PUNTO COFFEE (O.O COFFEE)",
-    image: "/images/perfil.png" 
+    image: "/images/marlon1.png" 
   },
   {
     id: 2,

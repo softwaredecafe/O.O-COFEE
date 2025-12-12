@@ -1,0 +1,44 @@
+﻿
+.primary-image {
+      background-size: cover;
+      background-position: center center;
+}
+.cover-title {padding: 0 15px; position: absolute; left: 0; top: 5%; right: 0;} 
+.cover-title > div {width: 40%; display: inline-block; margin: 0 10%;  }
+.cover-headline {margin-bottom: 10px;}
+.cover-content-block{position: absolute;   top: 50%; transform: translateY(-50%);
+                     width: 100%;
+}
+
+.cover-content-block > div {margin: 0 10%; } /* display: inline-block; */
+
+.social-icons {position: absolute; bottom: 5%; left: 0; right: 0; padding: 0 10% 0 10%;}
+.social-icons ul {display: inline-block;}
+.social-icons:empty {display: none;}
+
+.alignment-left .cover-content-block > div, .alignment-left .cover-title > div, .alignment-left .social-icons > div {text-align: left;}
+.alignment-center .cover-content-block > div, .alignment-center .cover-title > div, .alignment-center .social-icons > div {text-align: center;}
+.alignment-right .cover-content-block > div, .alignment-right .cover-title > div, .alignment-right .social-icons > div {text-align: right;}
+
+/*.placement-left .cover-content-block, .placement-left .cover-title, .placement-left .social-icons {text-align: left;}
+.placement-center .cover-content-block, .placement-center .cover-title, .placement-center .social-icons {text-align: center;}
+.placement-right .cover-content-block, .placement-right .cover-title, .placement-right .social-icons  {text-align: right;}*/
+
+.placement-top .cover-content-block{top: 15%; transform: none; }
+.placement-center .cover-content-block{top: 50%; }
+.placement-bottom .cover-content-block {bottom: 15%; top: auto; transform: none; }
+
+
+/*.centered-block > div {display: inline-block;  font-size: 48px;}*/
+
+@media screen and (max-width: 900px) { .cover-button-wrapper {top: auto;} }
+
+@media screen and (max-width: 480px) {
+    /*.cover-title {padding: 20px 0;}*/
+    .cover-title > div{ width: auto; margin: 0 15px;}
+    .cover-content-block > div{ width: auto; margin: 0 15px;}
+    /*.social-icons {bottom: 15px;}*/
+
+    .placement-top .cover-content-block{top: 20%;}
+    .placement-bottom .cover-content-block {bottom: 20%; }
+}

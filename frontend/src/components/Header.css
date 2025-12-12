@@ -40,8 +40,8 @@
 
 /* Estilos para la imagen del logo */
 .logo-image {
-  width: 45px; /* Tamaño ajustado */
-  height: 45px;
+  width: 60px; /* Tamaño ajustado */
+  height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }

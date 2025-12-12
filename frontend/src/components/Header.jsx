@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Header.css';
 
-import logoImage from '/images/beige.png';
+import logoImage from '/images/tematicos/navidad1.png';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,11 +56,11 @@ const Header = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <li><a href="/home">Inicio</a></li>
-              <li><a href="/formulario">Cataciones</a></li>
+              {/*<li><a href="/formulario">Cataciones</a></li>*/}
               <li><a href="/galeria">Galeria</a></li>
               <li><a href="/blog">Coffee Blog</a></li>
               <li><a href="/calendario">Actividades</a></li>
-              <li><a href="/roles">Conocenos</a></li>
+              {/*<li><a href="/roles">Conocenos</a></li>*/}
             </motion.ul>
           </nav>
         )}
